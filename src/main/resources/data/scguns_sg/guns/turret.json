@@ -4,11 +4,11 @@
       "size": 1.5,
       "yOffset": 1.8,
       "zOffset": -12.0,
-      "xOffset": 0.75,
+      "xOffset": -1.75,
       "textureLocation": "muzzle_flash_1",
       "alternateMuzzleFlash": true,
       "alternatePosition": {
-        "x": -1.5,
+        "x": -0.5,
         "y": 0.0,
         "z": -0.0
       }
@@ -41,7 +41,7 @@
     "damageFalloffStart": 18.0,
     "damageFalloffEnd": 45.0,
     "damageFalloffMinMultiplier": 0.65,
-    "damage": 6.5,
+    "damage": 15.5,
     "armorPen": 1.0,
     "gravity": false,
     "ejectsCasing": true,
@@ -55,7 +55,7 @@
   },
   "reloads": {
     "emptyMagTimer": 10,
-    "maxAmmo": 90,
+    "maxAmmo": 40,
     "reloadItem": "scguns:shatter_round",
     "reloadTimer": 60,
     "reloadType": "scguns:mag_fed"

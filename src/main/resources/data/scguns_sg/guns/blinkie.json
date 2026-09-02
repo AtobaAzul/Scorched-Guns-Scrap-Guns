@@ -9,7 +9,7 @@
   },
   "general": {
     "weaponType": "plasma",
-    "fireMode": "scguns:automatic",
+    "fireMode": "scguns:semi_automatic",
     "gripType": "scguns:two_handed",
     "baseGripType": "scguns:two_handed",
     "rate": 9,
@@ -19,11 +19,6 @@
   },
   "modules": {
     "attachments": {
-      "scope": {
-        "size": 0.8,
-        "yOffset": 6.0,
-        "zOffset": 5.2
-      },
       "underBarrel": {
         "yOffset": 5.5,
         "zOffset": -2.5
@@ -31,25 +26,24 @@
     },
     "zoom": {
       "fovModifier": 0.6,
-      "yOffset": 6.3,
+      "yOffset": 8.3,
       "zOffset": -0.75
     }
   },
   "projectile": {
-    "recoilAngle": 2.25,
+    "alwaysSpread": true,
+    "recoilAngle": 10.25,
     "recoilKick": 1.1,
-    "spread": 4.0,
+    "spread": 10.0,
     "criticalChance": 0.05,
     "advantage": "scguns:none",
-    "damage": 17.0,
-    "damageFalloffStart": 22.0,
-    "damageFalloffEnd": 55.0,
+    "damage": 25.0,
+    "damageFalloffStart": 10.0,
+    "damageFalloffEnd": 30.0,
     "damageFalloffMinMultiplier": 0.7,
-    "ejectsCasing": true,
+    "ejectsCasing": false,
     "gravity": false,
-    "item": "scguns:energy_cell",
-    "casingType": "scguns:empty_cell",
-    "casingParticle": "scguns:iron_casing",
+    "item": "scguns:plasma_core",
     "life": 45,
     "size": 6.0,
     "speed": 5.5,
@@ -58,9 +52,11 @@
   "reloads": {
     "emptyMagTimer": 10,
     "maxAmmo": 15,
-    "reloadItem": "scguns:energy_cell",
+    "reloadItem": "scguns:plasma_core",
+    "reloadByproduct": "scguns:empty_core",
+    "byproductChance": 0.7,
     "reloadTimer": 35,
-    "reloadType": "scguns:mag_fed"
+    "reloadType": "scguns:single_item"
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",

@@ -16,7 +16,7 @@
   },
   "general": {
     "weaponType": "shotgun",
-    "fireMode": "scguns:semi_automatic",
+    "fireMode": "scguns:automatic",
     "gripType": "scguns:two_handed",
     "baseGripType": "scguns:two_handed",
     "rate": 7,
