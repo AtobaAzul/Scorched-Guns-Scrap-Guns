@@ -305,7 +305,7 @@
 				{
 					"name": "right_arm",
 					"parent": "gun_body",
-					"pivot": [-7.25, -6.3, 7.6],
+					"pivot": [-7.25, -3.3, 7.6],
 					"cubes": [
 						{"origin": [-8, -6, 5.5], "size": [2.5, 10, 2.5], "uv": [8, 0]}
 					]

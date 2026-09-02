@@ -1156,9 +1156,9 @@
 					]
 				},
 				{
-					"name": "cylinder",
+					"name": "cylinder_magazine",
 					"parent": "magazine",
-					"pivot": [0, -9.37132, 2.5],
+					"pivot": [0, -10.37132, -0.5],
 					"cubes": [
 						{
 							"origin": [2.37132, -10.87132, -2],

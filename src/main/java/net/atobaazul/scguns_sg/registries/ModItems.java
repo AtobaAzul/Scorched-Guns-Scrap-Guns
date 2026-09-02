@@ -5,6 +5,8 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import top.ribs.scguns.init.ModSounds;
+import top.ribs.scguns.item.animated.AnimatedGunItem;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 import static net.atobaazul.scguns_sg.util.CompatManager.CREATE_ENABLED;
@@ -15,17 +17,126 @@ public class ModItems {
     //gun example
 
     // !!! IMPORTANT !!! FOR CUSTOM GUN ITEM CLASSES, THEY NEED TO BE UNDER THE top.ribs.common.item.gun PACKAGE. OTHERWISE RELOADS WILL NOT WORK.
-    /*public static final RegistryObject<AnimatedGunItem> HANGMAN_CARBINE = REGISTER.register("hangman_carbine",
+    public static final RegistryObject<AnimatedGunItem> STONKA = REGISTER.register("stonka",
             () -> new AnimatedGunItem(
-                    new Item.Properties().stacksTo(1).durability(1400).rarity(ModRarity.EXSANGUINATED),
-                    "hangman_carbine", // Model path
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "stonka", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
                     ModSounds.RELOAD_END.get(),           // Reload sound end
                     ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
             )
-    );*/
+    );
+
+    public static final RegistryObject<AnimatedGunItem> SLUGGA = REGISTER.register("slugga",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "slugga", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> SHOOTA= REGISTER.register("shoota",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "shoota", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "blinkie", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> DAKKA= REGISTER.register("dakka",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "dakka", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> TAKAH= REGISTER.register("takah",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "takah", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> DRUMMA= REGISTER.register("drumma",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "drumma", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+    public static final RegistryObject<AnimatedGunItem> TURRET = REGISTER.register("turret",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "turret", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+    public static final RegistryObject<AnimatedGunItem> PUNCHA = REGISTER.register("puncha",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "puncha", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+    public static final RegistryObject<AnimatedGunItem> ROKKIT_LAUNCHA = REGISTER.register("rokkit_launcha",
+            () -> new AnimatedGunItem(
+                    new Item.Properties().stacksTo(1).durability(600),
+                    "rokkit_launcha", // Model path
+                    ModSounds.MAG_OUT.get(),        // Reload sound mag out
+                    ModSounds.MAG_IN.get(),         // Reload sound mag in
+                    ModSounds.RELOAD_END.get(),           // Reload sound end
+                    ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
+                    ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
+            )
+    );
+
+
+
 
 
     //blueprint example
