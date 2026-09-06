@@ -12,6 +12,20 @@
         "name": "scguns_sg:item/dakka/fire3"
       }
     ]
+  },
+  "item.takah.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/takah/fire1"
+      },
+      {
+        "name": "scguns_sg:item/takah/fire2"
+      },
+      {
+        "name": "scguns_sg:item/takah/fire3"
+      }
+    ]
   }
 
 
