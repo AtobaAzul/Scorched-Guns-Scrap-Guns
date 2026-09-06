@@ -50,6 +50,7 @@ public class ScrapGuns {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         GunTierRegistry.register("scrap", 6, "scrap_gun_tier", 4);
+
         ProjectileManager.getInstance().registerFactory(PLASMA_CORE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PlasmaProjectileEntity(PLASMA_PROJECTILE.get(), worldIn, entity, weapon, item, modifiedGun));
     }
 

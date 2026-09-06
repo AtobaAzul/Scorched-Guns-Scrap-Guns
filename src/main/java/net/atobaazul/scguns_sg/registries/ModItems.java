@@ -56,8 +56,7 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie",
-            () -> new AnimatedScrapGunItem(
+    public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie", () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "blinkie", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -150,11 +149,7 @@ public class ModItems {
 
 
 
-    //blueprint example
     public static final RegistryObject<Item> SCRAP_BLUEPRINT = REGISTER.register("scrap_blueprint", () -> new BlueprintItem(new Item.Properties().stacksTo(1).rarity(Constants.PIGLISH)));
-
-    //rounds example
-    //public static final RegistryObject<Item> PULSE_CORE = REGISTER.register("pulse_core", () -> new AmmoItem(new Item.Properties()));
 
     //other items
     public static final RegistryObject<Item> SCRAP_CORE = REGISTER.register("scrap_core", () -> new Item(new Item.Properties()));

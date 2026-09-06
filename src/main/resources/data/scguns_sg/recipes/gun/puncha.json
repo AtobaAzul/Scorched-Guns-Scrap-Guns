@@ -1,0 +1,42 @@
+{
+	"type": "scguns:gun_bench",
+	"result": {
+		"item": "scguns_sg:puncha",
+		"count": 1
+	},
+	"ingredients": {
+		"blueprint": {
+			"item": "scguns_sg:scrap_blueprint"
+		},
+		"gun_top_internal_1": {
+			"tag": "forge:dyes/red"
+		},
+		"gun_top_internal_2": {
+			"tag": "forge:ingots/copper"
+		},
+		"gun_top_barrel_1": {
+			"tag": "forge:storage_blocks/copper"
+		},
+		"gun_top_barrel_2": {
+			"item": "scguns:gun_barrel"
+		},
+		"gun_internal_1": {
+			"item": "scguns:firing_unit"
+		},
+		"gun_internal_2": {
+			"item": "scguns:gun_parts"
+		},
+		"gun_barrel_1": {
+			"tag": "forge:storage_blocks/copper"
+		},
+		"gun_barrel_2": {
+			"item": "scguns:gun_barrel"
+		},
+		"gun_grip": {
+			"item": "scguns:copper_gun_frame"
+		},
+		"gun_magazine": {
+			"item": "scguns:gun_grip"
+		}
+	}
+}

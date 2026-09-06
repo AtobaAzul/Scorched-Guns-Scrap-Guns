@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
+import static net.atobaazul.scguns_sg.common.ModTags.SCRAP_GUN_TIER;
+import static net.atobaazul.scguns_sg.registries.ModItems.*;
 
 
 public class ModItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
@@ -29,6 +31,16 @@ public class ModItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(SCRAP_GUN_TIER)
+                .add(STONKA.get())
+                .add(SLUGGA.get())
+                .add(SHOOTA.get())
+                .add(BLINKIE.get())
+                .add(DAKKA.get())
+                .add(TAKAH.get())
+                .add(ROKKIT_LAUNCHA.get())
+                .add(TURRET.get());
+
         /*tag(ModTags.Items.ONE_HANDED_CARBINE)
                 .add(REHEARSE.get());
 

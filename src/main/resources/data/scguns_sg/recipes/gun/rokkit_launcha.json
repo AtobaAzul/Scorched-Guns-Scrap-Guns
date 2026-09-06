@@ -1,0 +1,36 @@
+{
+	"type": "scguns:gun_bench",
+	"result": {
+		"item": "scguns_sg:rokkit_launcha",
+		"count": 1
+	},
+	"ingredients": {
+		"blueprint": {
+			"item": "scguns_sg:scrap_blueprint"
+		},
+		"gun_top_internal_1": {
+			"tag": "forge:dyes/red"
+		},
+		"gun_top_internal_2": {
+			"item": "scguns:copper_gun_frame"
+		},
+		"gun_top_barrel_1": {
+			"tag": "forge:storage_blocks/copper"
+		},
+		"gun_internal_1": {
+			"item": "scguns:firing_unit"
+		},
+		"gun_internal_2": {
+			"item": "scguns:firing_unit"
+		},
+		"gun_barrel_1": {
+			"item": "scguns:heavy_gun_barrel"
+		},
+		"gun_barrel_2": {
+			"item": "scguns:heavy_gun_barrel"
+		},
+		"gun_grip": {
+			"item": "scguns:gun_grip"
+		}
+	}
+}
