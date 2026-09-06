@@ -15,9 +15,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import top.ribs.scguns.client.screen.BlueprintScreen;
+import top.ribs.scguns.common.ProjectileManager;
 import top.ribs.scguns.entity.player.GunTierRegistry;
+import top.ribs.scguns.entity.projectile.PlasmaProjectileEntity;
 
 import java.util.List;
+
+import static top.ribs.scguns.init.ModEntities.PLASMA_PROJECTILE;
+import static top.ribs.scguns.init.ModItems.PLASMA_CORE;
 
 @Mod(ScrapGuns.MOD_ID)
 public class ScrapGuns {
@@ -37,21 +42,15 @@ public class ScrapGuns {
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             SGClientHandler.registerClientHandlers(modEventBus);
-            //example blueprint
-            //BlueprintScreen.registerLoreOnlyItem(new ResourceLocation(MOD_ID, "gravekeeper_blueprint"), "anathema");
-            //BlueprintScreen.registerGunOrder(List.of(
-            //        "mortician", "bella", "rehearse",
-            //        "hangman_carbine", "gallows", "cacophony",
-            //        "keteriya", "necrosis",
-            //        "silverlining", "ribcage", "dead_draft", "exhumer", "anathema"
-            //));
-            //ModItems.setupTabEditors();
+            BlueprintScreen.registerGunOrder(List.of(
+                    "shoota", "slugga", "rokkit_launcha", "drumma", "puncha", "blinkie", "dakka", "takah", "stonka", "turret"
+            ));
         });
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        //GunTierRegistry.register("gravekeeper", 6, "gravekeeper_gun_tier", 4);
-        //ProjectileManager.getInstance().registerFactory(ModItems.SILVER_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new HexRoundProjectileEntity(ModEntities.HEX_ROUND_PROJECTILE.get(), worldIn, entity, weapon, item, modifiedGun));
+        GunTierRegistry.register("scrap", 6, "scrap_gun_tier", 4);
+        ProjectileManager.getInstance().registerFactory(PLASMA_CORE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PlasmaProjectileEntity(PLASMA_PROJECTILE.get(), worldIn, entity, weapon, item, modifiedGun));
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

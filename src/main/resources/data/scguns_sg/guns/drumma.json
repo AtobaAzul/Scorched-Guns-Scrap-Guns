@@ -9,9 +9,7 @@
   },
   "general": {
     "weaponType": "pistol",
-    "fireMode": "scguns:burst",
-    "burstAmount": 4,
-    "burstCooldown": 5,
+    "fireMode": "scguns:automatic",
     "gripType": "scguns:one_handed",
     "rate": 2,
     "meleeDamage": 5.5,
