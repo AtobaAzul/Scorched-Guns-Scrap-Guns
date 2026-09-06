@@ -9,6 +9,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
+import static net.atobaazul.scguns_sg.registries.ModItems.*;
 
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -21,7 +22,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         //simpleItem(HEX_ROUND);
 
         //withExistingParent(GRAVEKEEPER_GHOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
-
+        simpleItem(SCRAP_BLUEPRINT);
+        simpleItem(SCRAP_CORE);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
