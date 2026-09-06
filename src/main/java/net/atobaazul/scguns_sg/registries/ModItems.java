@@ -6,7 +6,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import top.ribs.scguns.init.ModSounds;
+import top.ribs.scguns.item.BlueprintItem;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
+import top.ribs.scguns.util.Constants;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 import static net.atobaazul.scguns_sg.util.CompatManager.CREATE_ENABLED;
@@ -140,13 +142,13 @@ public class ModItems {
 
 
     //blueprint example
-    //public static final RegistryObject<Item> GRAVEKEEPER_BLUEPRINT = REGISTER.register("gravekeeper_blueprint", () -> new BlueprintItem(new Item.Properties().stacksTo(1).rarity(ModRarity.EXSANGUINATED)));
+    public static final RegistryObject<Item> SCRAP_BLUEPRINT = REGISTER.register("scrap_blueprint", () -> new BlueprintItem(new Item.Properties().stacksTo(1).rarity(Constants.PIGLISH)));
 
     //rounds example
     //public static final RegistryObject<Item> PULSE_CORE = REGISTER.register("pulse_core", () -> new AmmoItem(new Item.Properties()));
 
     //other items
-    //public static final RegistryObject<Item> NECROMIUM_GUN_FRAME = REGISTER.register("necromium_gun_frame", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCRAP_CORE = REGISTER.register("scrap_core", () -> new Item(new Item.Properties()));
 
     //create sequenced assembly item example
     //public static final RegistryObject<Item> UNFINISHED_HEX_ROUND = sequencedIngredient("unfinished_hex_round");

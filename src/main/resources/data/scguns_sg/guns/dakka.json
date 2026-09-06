@@ -67,8 +67,8 @@
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",
-    "enchantedFire": "scguns:item.combat_shotgun.fire",
-    "fire": "scguns:item.combat_shotgun.fire",
+    "enchantedFire": "scguns_sg:item.dakka.fire",
+    "fire": "scguns_sg:item.dakka.fire",
     "reload": "scguns:item.gauss.reload",
     "silencedFire": "scguns:item.makeshift_rifle.silenced_fire"
   }

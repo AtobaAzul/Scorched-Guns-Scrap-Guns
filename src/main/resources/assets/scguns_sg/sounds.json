@@ -1,0 +1,25 @@
+{
+  "item.dakka.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/dakka/fire1"
+      },
+      {
+        "name": "scguns_sg:item/dakka/fire2"
+      },
+      {
+        "name": "scguns_sg:item/dakka/fire3"
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+
+}
