@@ -33,7 +33,7 @@
   },
   "projectile": {
     "alwaysSpread": true,
-    "projectileAmount": 26,
+    "projectileAmount": 13,
     "criticalChance": 0.08,
     "playerKnockBack": true,
     "playerKnockBackStrength": 0.45,

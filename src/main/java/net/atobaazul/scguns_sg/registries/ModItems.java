@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import top.ribs.scguns.init.ModSounds;
 import top.ribs.scguns.item.BlueprintItem;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
+import top.ribs.scguns.common.item.gun.AnimatedScrapGunItem;
 import top.ribs.scguns.util.Constants;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
@@ -56,7 +57,7 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "blinkie", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -68,9 +69,11 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> DAKKA= REGISTER.register("dakka",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "dakka", // Model path
+                    true,
+                    3,
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
                     ModSounds.RELOAD_END.get(),           // Reload sound end
@@ -92,9 +95,11 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> DRUMMA= REGISTER.register("drumma",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "drumma", // Model path
+                    true,
+                    4,
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
                     ModSounds.RELOAD_END.get(),           // Reload sound end
@@ -104,9 +109,11 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> TURRET = REGISTER.register("turret",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "turret", // Model path
+                    true,
+                    2,
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
                     ModSounds.RELOAD_END.get(),           // Reload sound end
@@ -115,9 +122,11 @@ public class ModItems {
             )
     );
     public static final RegistryObject<AnimatedGunItem> PUNCHA = REGISTER.register("puncha",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "puncha", // Model path
+                    true,
+                    2,
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
                     ModSounds.RELOAD_END.get(),           // Reload sound end
@@ -126,7 +135,7 @@ public class ModItems {
             )
     );
     public static final RegistryObject<AnimatedGunItem> ROKKIT_LAUNCHA = REGISTER.register("rokkit_launcha",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(600),
                     "rokkit_launcha", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
