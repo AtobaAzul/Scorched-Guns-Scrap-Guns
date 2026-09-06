@@ -4,12 +4,18 @@
       "size": 1.0,
       "yOffset": 6.6,
       "zOffset": -9.0,
-      "textureLocation": "muzzle_flash_3"
+      "textureLocation": "muzzle_flash_3",
+      "spawnParticles": true,
+      "particleType": "scguns:green_flame",
+      "particleCount": 8,
+      "particleSpread": 0.5,
+      "particleRingRadius": 1.5
     }
   },
   "general": {
     "weaponType": "plasma",
-    "fireMode": "scguns:semi_automatic",
+    "fireMode": "scguns:pulse",
+    "fireTimer": 25,
     "gripType": "scguns:two_handed",
     "baseGripType": "scguns:two_handed",
     "rate": 9,
@@ -33,7 +39,7 @@
   "projectile": {
     "alwaysSpread": true,
     "recoilAngle": 10.25,
-    "recoilKick": 1.1,
+    "recoilKick": 3.1,
     "spread": 10.0,
     "criticalChance": 0.05,
     "advantage": "scguns:none",
@@ -61,6 +67,7 @@
   "sounds": {
     "cock": "scguns:item.pistol.cock",
     "enchantedFire": "scguns:item.plasma.fire",
+    "preFire": "scguns:item.gauss.pre_fire",
     "fire": "scguns:item.plasma.fire",
     "reload": "scguns:item.gauss.reload"
   }
