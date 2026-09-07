@@ -71,8 +71,8 @@
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",
-    "enchantedFire": "scguns:item.rusty_gnat.fire",
-    "fire": "scguns:item.rusty_gnat.fire",
+    "enchantedFire": "scguns_sg:item.shoota.fire",
+    "fire": "scguns_sg:item.shoota.fire",
     "reload": "scguns:item.gauss.reload",
     "silencedFire": "scguns:item.rusty_gnat.silenced_fire"
   }

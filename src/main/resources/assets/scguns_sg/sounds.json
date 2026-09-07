@@ -26,7 +26,36 @@
         "name": "scguns_sg:item/takah/fire3"
       }
     ]
+  },
+  "item.shoota.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/shoota/fire1"
+      },
+      {
+        "name": "scguns_sg:item/shoota/fire2"
+      },
+      {
+        "name": "scguns_sg:item/shoota/fire3"
+      }
+    ]
+  },
+  "item.blinkie.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/blinkie/fire1"
+      },
+      {
+        "name": "scguns_sg:item/blinkie/fire2"
+      },
+      {
+        "name": "scguns_sg:item/blinkie/fire3"
+      }
+    ]
   }
+
 
 
 

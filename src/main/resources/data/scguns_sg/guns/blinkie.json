@@ -66,9 +66,9 @@
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",
-    "enchantedFire": "scguns:item.plasma.fire",
+    "enchantedFire": "scguns_sg:item.blinkie.fire",
     "preFire": "scguns:item.gauss.pre_fire",
-    "fire": "scguns:item.plasma.fire",
+    "fire": "scguns_sg:item.blinkie.fire",
     "reload": "scguns:item.gauss.reload"
   }
 }
