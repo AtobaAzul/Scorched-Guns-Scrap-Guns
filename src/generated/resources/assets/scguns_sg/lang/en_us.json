@@ -2,6 +2,8 @@
   "creativetab.scguns_sg_tab": "Scorched Guns: Scrap Guns",
   "item.scguns_sg.blinkie": "Blinkie",
   "item.scguns_sg.dakka": "Da Big Dakka",
+  "item.scguns_sg.drumma": "Drumma",
+  "item.scguns_sg.puncha": "Puncha",
   "item.scguns_sg.rokkit_launcha": "Rokkit Launcha",
   "item.scguns_sg.scrap_blueprint": "Scrap Blueprint",
   "item.scguns_sg.scrap_core": "Scrap Core",
@@ -10,5 +12,14 @@
   "item.scguns_sg.stonka": "Stonka",
   "item.scguns_sg.takah": "Head Takah",
   "item.scguns_sg.turret": "Looted Turret",
-  "scguns.desc.stonka": "Smaller version of the Slugga, yet punches just as hard and heavy, somehow\n&4So cute!"
+  "scguns.desc.blinkie": "Crudely made high tech machine that barely works, seems like there’s no protection from radiation leaks. §4OOHHH Shiny!",
+  "scguns.desc.dakka": "Perfect for sustained suppressing fire, not so well for accuracy. Feels like you can shoot forever. §4DAKKA DAKKA DAKKA!",
+  "scguns.desc.drumma": "True testament of grip strength, consistent fire power makes it up for awkward handling. §4Hear da drum of §4WARRR!",
+  "scguns.desc.puncha": "Designed fit for a brute, yet you can deny its raw power in a battlefield. §4Give me all your §4teefz!",
+  "scguns.desc.rokkit_launcha": "Engineering marvel of a device that is closer to metal pipe than a weapon, gauge seems broken. §4Rokkit go KABOOM!",
+  "scguns.desc.shoota": "Held together by hopes and dreams, surprisingly effective but high maintenance. §4Proppa §4gun fo proppa gunna!",
+  "scguns.desc.slugga": "Blocky and heavily built magnum made for sidearm role, bit heavy for it though. §4Perfect §4pocket gun!",
+  "scguns.desc.stonka": "Smaller version of the Slugga, yet punches just as hard and heavy, somehow. §4So cute!",
+  "scguns.desc.takah": "Failed attempt at making sniper rifle, seems like they just designed longer machine gun. §4Take em Eadz Quickly!",
+  "scguns.desc.turret": "Seems like brutes using turrets got bored of their defensive position and had the idea to just take the big gun and walk into the fray. §4Big Dakka is da §4Best DAKKA!"
 }

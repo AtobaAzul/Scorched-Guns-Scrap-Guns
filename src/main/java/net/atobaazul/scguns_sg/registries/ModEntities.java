@@ -1,6 +1,7 @@
 package net.atobaazul.scguns_sg.registries;
 
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
