@@ -34,7 +34,8 @@ public class RokkitGunRenderer extends AnimatedGunRenderer {
         if (this.currentRenderStack != null && bone.getName().matches("rocket")) {
             float currentAmmo = Gun.getAmmoCount(this.currentRenderStack);
             float scale = currentAmmo <= 0 ? 0f : 1f;
-            //We can't hide bones due to scguns' bone visibility caching.
+
+            //We can't hide bones due to scguns' bone visibility caching, so we scale it down to 0 instead.
             bone.updateScale(scale, scale, scale);
         }
     }

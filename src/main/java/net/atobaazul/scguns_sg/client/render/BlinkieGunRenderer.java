@@ -2,7 +2,6 @@ package net.atobaazul.scguns_sg.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.atobaazul.scguns_sg.ScrapGuns;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import software.bernie.geckolib.cache.object.GeoBone;
 import top.ribs.scguns.client.render.gun.animated.AnimatedGunRenderer;
 import top.ribs.scguns.common.ChargeHandler;
-import top.ribs.scguns.common.Gun;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
 
 public class BlinkieGunRenderer extends AnimatedGunRenderer {
@@ -35,10 +33,12 @@ public class BlinkieGunRenderer extends AnimatedGunRenderer {
         Minecraft client = Minecraft.getInstance();
         if (bone.getName().matches("coil") && this.currentRenderStack != null) {
             float chargeProgress = ChargeHandler.getChargeProgress(client.player, this.currentRenderStack);
-            ScrapGuns.LOGGER.info("charge progress: {}", chargeProgress);
+
+            int blockLight = LightTexture.block(packedLight);
+            int skyLight = LightTexture.sky(packedLight);
 
             int light = (int) Math.floor(Mth.lerp(chargeProgress, 5, 15));
-            packedLight = LightTexture.pack(light, light);
+            packedLight = LightTexture.pack(Mth.clamp(light + blockLight, 0, 15), Mth.clamp(light + skyLight, 0, 15));
         }
 
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
