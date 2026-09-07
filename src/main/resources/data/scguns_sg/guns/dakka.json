@@ -46,7 +46,7 @@
     "damageFalloffEnd": 20.0,
     "damageFalloffMinMultiplier": 0.4,
     "advantage": "scguns:none",
-    "damage": 15.5,
+    "damage": 10.5,
     "ejectsCasing": true,
     "gravity": false,
     "item": "scguns:shotgun_shell",

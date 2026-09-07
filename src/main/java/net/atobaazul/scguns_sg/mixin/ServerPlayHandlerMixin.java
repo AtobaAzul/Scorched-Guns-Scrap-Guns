@@ -82,15 +82,21 @@ public class ServerPlayHandlerMixin {
             if (gunItem.isVolley() && gunItem.isVolley()) {
                 CompoundTag tag = heldItem.getOrCreateTag();
                 int currentAmmo = tag.getInt("AmmoCount");
-
                 int count = Math.min(currentAmmo, gunItem.getVolleyAmount());
 
                 if (!player.isCreative()) {
-                    //seperate chance from phantom rounds, so both can be stacked.
-                    if (!tag.getBoolean("IgnoreAmmo") && player.level().random.nextInt(4 - Mth.clamp(3, 1, 2)) != 0) {
-                        int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RECLAIMED.get(), heldItem);
-                        if (level == 0 || player.level().random.nextInt(4 - Mth.clamp(level, 1, 2)) != 0) {
-                            tag.putInt("AmmoCount", Math.max(0, currentAmmo - count));
+                    if (!tag.getBoolean("IgnoreAmmo")) {
+                        for (int i = 0; i < count+1; i++) {
+                            tag = heldItem.getOrCreateTag();
+                            currentAmmo = tag.getInt("AmmoCount");
+                            count = Math.min(currentAmmo, gunItem.getVolleyAmount());
+                            //seperate chance from phantom rounds, so both can be stacked.
+                            if (player.level().random.nextInt(4 - Mth.clamp(3, 1, 2)) != 0) {
+                                int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RECLAIMED.get(), heldItem);
+                                if (level == 0 || player.level().random.nextInt(4 - Mth.clamp(level, 1, 2)) != 0) {
+                                    tag.putInt("AmmoCount", Math.max(0, currentAmmo - 1));
+                                }
+                            }
                         }
                     }
                 }
