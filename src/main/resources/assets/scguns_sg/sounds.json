@@ -54,6 +54,20 @@
         "name": "scguns_sg:item/blinkie/fire3"
       }
     ]
+  },
+  "item.drumma.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/drumma/fire1"
+      },
+      {
+        "name": "scguns_sg:item/drumma/fire2"
+      },
+      {
+        "name": "scguns_sg:item/drumma/fire3"
+      }
+    ]
   }
 
 

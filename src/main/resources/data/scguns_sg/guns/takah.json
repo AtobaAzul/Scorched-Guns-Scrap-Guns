@@ -29,9 +29,9 @@
       }
     },
     "zoom": {
-      "fovModifier": 0.15,
+      "fovModifier": 0.25,
       "yOffset": 7.36,
-      "zOffset": 6.5
+      "zOffset": 10.5
     }
   },
   "projectile": {

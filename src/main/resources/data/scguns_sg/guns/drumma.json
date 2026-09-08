@@ -11,7 +11,7 @@
     "weaponType": "pistol",
     "fireMode": "scguns:automatic",
     "gripType": "scguns:one_handed",
-    "rate": 2,
+    "rate": 3,
     "meleeDamage": 5.5,
     "meleeCooldownTicks": 12,
     "meleeReach": 2.5,
@@ -27,10 +27,10 @@
     "recoilAngle": 2.8,
     "recoilKick": 1.35,
     "spread": 6.0,
-    "criticalChance": 0.05,
+    "criticalChance": 0.01,
     "advantage": "scguns:none",
-    "damage": 10.0,
-    "damageFalloffStart": 12.0,
+    "damage": 5.0,
+    "damageFalloffStart": 10.0,
     "damageFalloffEnd": 30.0,
     "damageFalloffMinMultiplier": 0.45,
     "gravity": false,
@@ -45,15 +45,15 @@
   },
   "reloads": {
     "emptyMagTimer": 10,
-    "maxAmmo": 12,
+    "maxAmmo": 20,
     "reloadItem": "scguns:compact_copper_round",
     "reloadTimer": 40,
     "reloadType": "scguns:mag_fed"
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",
-    "enchantedFire": "scguns:item.scrapper.fire",
-    "fire": "scguns:item.scrapper.fire",
+    "enchantedFire": "scguns_sg:item.drumma.fire",
+    "fire": "scguns_sg:item.drumma.fire",
     "reload": "scguns:item.gauss.reload",
     "silencedFire": "scguns:item.rusty_gnat.silenced_fire"
   }
