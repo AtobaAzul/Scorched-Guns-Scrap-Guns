@@ -44,6 +44,9 @@
     "criticalChance": 0.05,
     "advantage": "scguns:none",
     "damage": 25.0,
+    "playerKnockBack": true,
+    "playerKnockBackStrength": 0.2,
+    "knockbackStrength": 0.35,
     "damageFalloffStart": 10.0,
     "damageFalloffEnd": 30.0,
     "damageFalloffMinMultiplier": 0.7,
@@ -53,7 +56,8 @@
     "life": 45,
     "size": 6.0,
     "speed": 5.5,
-    "trailLengthMultiplier": 1.0
+    "trailLengthMultiplier": 1.0,
+    "trailThickness": 1.5
   },
   "reloads": {
     "emptyMagTimer": 10,
