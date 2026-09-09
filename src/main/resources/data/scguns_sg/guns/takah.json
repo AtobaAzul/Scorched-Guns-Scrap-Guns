@@ -31,7 +31,7 @@
     "zoom": {
       "fovModifier": 0.25,
       "yOffset": 7.36,
-      "zOffset": 10.5
+      "zOffset": 7.5
     }
   },
   "projectile": {
