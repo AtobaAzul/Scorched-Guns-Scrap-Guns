@@ -36,7 +36,21 @@ public class ServerPlayHandlerMixin {
     }
 
 
+    @WrapMethod(method = "handleCasingEjection", remap = false)
+    private static void scguns_cnc$handleCasingEjection(ServerPlayer player, ItemStack heldItem, Gun modifiedGun, Level world, Operation<Void> original) {
+        if (Config.COMMON.gameplay.spawnCasings.get()) {
+            if (heldItem.getItem() instanceof AnimatedScrapGunItem scrapGun && scrapGun.isVolley() && !player.getAbilities().instabuild && !modifiedGun.getProjectile(heldItem).ejectDuringReload()) {
+                CompoundTag tag = heldItem.getOrCreateTag();
+                int currentAmmo = player.isCreative() ? modifiedGun.getReloads().getMaxAmmo() : tag.getInt("AmmoCount");
+                int count = Math.min(currentAmmo, scrapGun.getVolleyAmount());
 
+                for (int i = 0; i < count; i++) {
+                    original.call(player, heldItem, modifiedGun, world);
+                }
+            } else {
+                original.call(player, heldItem, modifiedGun, world);
+            }
+        }
     }
 
     @WrapMethod(method = "consumeAmmo", remap = false)
@@ -51,7 +65,7 @@ public class ServerPlayHandlerMixin {
 
                 if (!player.isCreative()) {
                     if (!tag.getBoolean("IgnoreAmmo")) {
-                        for (int i = 0; i < count+1; i++) {
+                        for (int i = 0; i < count; i++) {
                             tag = heldItem.getOrCreateTag();
                             currentAmmo = tag.getInt("AmmoCount");
                             count = Math.min(currentAmmo, gunItem.getVolleyAmount());
