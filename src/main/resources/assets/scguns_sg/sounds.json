@@ -68,7 +68,25 @@
         "name": "scguns_sg:item/drumma/fire3"
       }
     ]
+  },
+  "item.slugga.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/slugga/fire1",
+        "volume": 1.25
+      },
+      {
+        "name": "scguns_sg:item/slugga/fire2",
+        "volume": 1.25
+      },
+      {
+        "name": "scguns_sg:item/slugga/fire3",
+        "volume": 1.25
+      }
+    ]
   }
+
 
 
 
