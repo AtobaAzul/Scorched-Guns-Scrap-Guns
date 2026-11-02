@@ -4,14 +4,21 @@ import com.mojang.serialization.Dynamic;
 
 import net.atobaazul.scguns_sg.client.ExpandedAnimationController;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
+import net.atobaazul.scguns_sg.common.entity.gun.AttachedMountedGun;
 import net.atobaazul.scguns_sg.common.entity.gun.BulletSpawnOffset;
+import net.atobaazul.scguns_sg.common.entity.gun.CustomScorchedSimGun;
 import net.atobaazul.scguns_sg.common.entity.gun.Gunner;
+import net.atobaazul.scguns_sg.common.entity.gun.MountedGun;
+import net.atobaazul.scguns_sg.common.entity.gun.SimulatedGun;
 import net.atobaazul.scguns_sg.common.entity.util.BrainCommons;
 import net.atobaazul.scguns_sg.common.entity.util.MobUtil;
 import net.atobaazul.scguns_sg.common.entity.util.StunnableHog;
+import net.atobaazul.scguns_sg.common.network.GunFlashMessage;
+import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -28,6 +35,9 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import top.ribs.scguns.ScorchedGuns;
+import top.ribs.scguns.common.Gun;
+import top.ribs.scguns.init.ModItems;
 
 public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, BulletSpawnOffset{
 
@@ -53,12 +63,27 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     public static int MELEE_DELAY = 15;
     public static int MELEE_DURATION = 31;
 
+    public final Vec3 BarrelOffest = new Vec3(23f/16f * -1, 25f/16f, -51f/16f * -1);
 
-    public final Vec3 BarrelOffest = new Vec3(17.5f/16f, 29f/16f, -54f/16f * -1);
-
+    public final MountedGun barrel;
 
     public PiglinJunkerEntity(EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
+        this.barrel = new AttachedMountedGun(this,
+            new CustomScorchedSimGun.Builder(ModItems.BIRDFEEDER.get().getGun())
+                .projectileDamage(3f)
+                .fireRate(1)
+                .maxRange(20)
+                .idealRange(16)
+                .ammoCapacity(6)
+                .reloadTime(120)
+                .projectileDamage(10)
+                .gunIndex(0)
+                .noGunFlash()
+                .build(),
+            BarrelOffest,
+            (a) -> true
+        );
     }
 
     private static final EntityDataAccessor<Long> TICKS_REMAINING = SynchedEntityData.defineId(PiglinJunkerEntity.class, EntityDataSerializers.LONG);
@@ -80,7 +105,7 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
                     state.setAnimation(STUN_END);
                 }
             }
-            else if(!state.isCurrentAnimation(BREATH)){
+            else if(!state.isCurrentAnimation(BREATH) && !state.isCurrentAnimation(SHOOT_WALKING) && !state.isCurrentAnimation(SHOOT_STANDING)){
                 if (state.isMoving()) {
                     state.setAnimation(WALK);
                 } else {
@@ -122,6 +147,7 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
         .add(Attributes.FOLLOW_RANGE, 128.0D)
         .add(Attributes.MOVEMENT_SPEED, 0.3F)
         .add(Attributes.ATTACK_DAMAGE, 30.0D)
+        .add(Attributes.ATTACK_KNOCKBACK, 3.0D)
         .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
         .add(Attributes.ARMOR, 6.0D)
         .add(Attributes.MAX_HEALTH, 1000.0D);
@@ -146,6 +172,9 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     public void tick() {
         super.tick();
         if(!this.level().isClientSide()){
+            if (brain.getTimeUntilExpiry(ModBrainMemories.DELAYED_MELEE.get()) == MELEE_DURATION) {
+                this.triggerAnim("behavior", "melee");
+            }
             if(this.getBrain().hasMemoryValue(ModBrainMemories.STUNNED.get())){
                 this.setStunTicksRemaining(this.getBrain().getTimeUntilExpiry(ModBrainMemories.STUNNED.get()));
             }else{
@@ -182,10 +211,29 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
         this.getBrain().tick((ServerLevel)this.level(), this);
         PiglinJunkerAi.updateActivity(this);
         BrainCommons.updateMaxRangeAggressive(this);
-        if (this.getBrain().getMemory(ModBrainMemories.AIM_TICKS.get()).filter(aim -> aim > 5).isPresent()) {
-            this.setYBodyRot(this.getYHeadRot());
-        }
         this.level().getProfiler().pop();
         super.customServerAiStep();
+    }
+
+    @Override
+    public void onGunFire(SimulatedGun gun, Vec3 targetPos) {
+        ScorchedGuns.LOGGER.info("GUN FIRE");
+        Gun.Display.Flash flash = ModItems.BIRDFEEDER.get().getGun().getDisplay().getFlash();
+        if (flash == null) return;
+        ResourceLocation flashTexture = 
+            ResourceLocation.fromNamespaceAndPath(
+                ScorchedGuns.MODID, 
+                "textures/effect/" + flash.getTextureLocation() + ".png"
+            );
+        SGPacketHandler.sendToNearbyPlayers(
+            () -> MobUtil.levelLocationFromEntity(this), 
+            new GunFlashMessage(
+                this.getId(), 
+                0, 
+                flashTexture, 
+                false, 
+                1.2F
+            )
+        );
     }
 }

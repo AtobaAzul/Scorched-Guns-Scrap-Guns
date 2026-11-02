@@ -87,7 +87,8 @@ public class PiglinJunkerAi {
                 List.of(
                     2400
                 )),
-                new BreakBlocksToTarget(PiglinJunkerAi::canBreak, 20)
+                new BreakBlocksToTarget(PiglinJunkerAi::canBreak, 20),
+                new MountedgunShoot(160, 2, 4)
             )), ImmutableSet.of(
                 Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT)
             ), ImmutableSet.of(

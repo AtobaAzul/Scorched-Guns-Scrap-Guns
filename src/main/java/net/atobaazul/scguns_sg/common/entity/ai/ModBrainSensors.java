@@ -21,7 +21,7 @@ public class ModBrainSensors {
 
     // Improved versions of vanilla sensors
     public static final Supplier<SensorType<VarRangePlayerSensor>> EXTREMELY_LONG_RANGE_PLAYER = SENSOR_TYPES
-            .register("extremely_long_range_player", () -> new SensorType<>(() -> new VarRangePlayerSensor(60, 128)));
+            .register("extremely_long_range_player", () -> new SensorType<>(() -> new VarRangePlayerSensor(30, 128)));
 
     public static void register(IEventBus modEventBus) {
         SENSOR_TYPES.register(modEventBus);

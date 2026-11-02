@@ -1,6 +1,8 @@
 package net.atobaazul.scguns_sg;
 
 import com.mojang.logging.LogUtils;
+
+import net.atobaazul.scguns_sg.client.GunFlashHandler;
 import net.atobaazul.scguns_sg.client.SGClientHandler;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainActivities;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
@@ -46,6 +48,8 @@ public class ScrapGuns {
         ModSoundEvents.REGISTER.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.addListener(GunFlashHandler::onTick);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             SGClientHandler.registerClientHandlers(modEventBus);
