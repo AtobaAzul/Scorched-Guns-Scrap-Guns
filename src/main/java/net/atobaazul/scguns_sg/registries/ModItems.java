@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import top.ribs.scguns.init.ModSounds;
 import top.ribs.scguns.item.BlueprintItem;
+import top.ribs.scguns.item.GunItem;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
 import top.ribs.scguns.common.item.gun.AnimatedScrapGunItem;
 import top.ribs.scguns.util.Constants;
@@ -144,6 +145,10 @@ public class ModItems {
                     ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
             )
+    );
+
+    public static final RegistryObject<GunItem> PLACEHOLDER_GUN = REGISTER.register("placeholder_gun",
+            () -> new GunItem(new Item.Properties())
     );
 
 

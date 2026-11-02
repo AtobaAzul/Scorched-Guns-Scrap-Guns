@@ -2,6 +2,7 @@ package net.atobaazul.scguns_sg;
 
 import com.mojang.logging.LogUtils;
 import net.atobaazul.scguns_sg.client.SGClientHandler;
+import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
 import net.atobaazul.scguns_sg.registries.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -52,6 +53,8 @@ public class ScrapGuns {
         GunTierRegistry.register("scrap", 6, "scrap_gun_tier", 4);
 
         ProjectileManager.getInstance().registerFactory(PLASMA_CORE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PlasmaProjectileEntity(PLASMA_PROJECTILE.get(), worldIn, entity, weapon, item, modifiedGun));
+
+        SGPacketHandler.init();
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
