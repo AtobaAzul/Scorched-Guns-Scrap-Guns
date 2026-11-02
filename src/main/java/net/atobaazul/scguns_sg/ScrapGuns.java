@@ -2,6 +2,9 @@ package net.atobaazul.scguns_sg;
 
 import com.mojang.logging.LogUtils;
 import net.atobaazul.scguns_sg.client.SGClientHandler;
+import net.atobaazul.scguns_sg.common.entity.ai.ModBrainActivities;
+import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
+import net.atobaazul.scguns_sg.common.entity.ai.ModBrainSensors;
 import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
 import net.atobaazul.scguns_sg.registries.*;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +40,9 @@ public class ScrapGuns {
 
         ModItems.REGISTER.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBrainMemories.register(modEventBus);
+        ModBrainSensors.register(modEventBus);
+        ModBrainActivities.register(modEventBus);
         ModSoundEvents.REGISTER.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);

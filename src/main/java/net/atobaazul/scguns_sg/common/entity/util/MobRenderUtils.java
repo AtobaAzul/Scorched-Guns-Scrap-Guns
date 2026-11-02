@@ -11,6 +11,9 @@ import net.minecraft.util.RandomSource;
 import org.joml.Matrix4f;
 import top.ribs.scguns.client.GunRenderType;
 
+/**
+ * @author: Krei(github: rekales)
+ */
 public final class MobRenderUtils {
 
     public static void renderMuzzleFlash(PoseStack poseStack, RenderType renderType, MultiBufferSource buffer, ResourceLocation flashTexture,

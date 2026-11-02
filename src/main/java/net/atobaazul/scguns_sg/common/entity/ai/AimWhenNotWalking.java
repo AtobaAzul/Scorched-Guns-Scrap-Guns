@@ -1,0 +1,77 @@
+package net.atobaazul.scguns_sg.common.entity.ai;
+
+import com.google.common.collect.ImmutableMap;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.behavior.Behavior;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.memory.MemoryStatus;
+
+import java.util.function.Predicate;
+
+import static net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories.MAX_AIM_TICKS;
+import static net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories.MIN_AIM_TICKS;
+
+/**
+ * @author: Krei(github: rekales)
+ */
+public class AimWhenNotWalking extends Behavior<Mob> {
+
+    private final Predicate<LivingEntity> canAim;
+
+    public AimWhenNotWalking() {
+        this(entity -> true);
+    }
+
+    public AimWhenNotWalking(Predicate<LivingEntity> canAim) {
+        super(ImmutableMap.of(
+                MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED,
+                MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT,
+                MemoryModuleType.WALK_TARGET, MemoryStatus.REGISTERED,
+                ModBrainMemories.AIM_TICKS.get(), MemoryStatus.REGISTERED
+        ));
+        this.canAim = canAim;
+    }
+
+    @Override
+    protected boolean checkExtraStartConditions(ServerLevel level, Mob mob) {
+        return this.canAim.test(mob);
+    }
+
+    @Override
+    protected boolean canStillUse(ServerLevel level, Mob mob, long gameTime) {
+        return this.canAim.test(mob)
+                && mob.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET);
+    }
+
+    @Override
+    protected void stop(ServerLevel level, Mob mob, long gameTime) {
+        if (!this.timedOut(gameTime)) {
+            mob.getBrain().setMemory(ModBrainMemories.AIM_TICKS.get(), 0);
+        }
+    }
+
+    @SuppressWarnings("OptionalGetWithoutIsPresent")  // because already handled on canStillUse
+    @Override
+    protected void tick(ServerLevel level, Mob mob, long gameTime) {
+        Brain<?> brain = mob.getBrain();
+        LivingEntity target = brain.getMemory(MemoryModuleType.ATTACK_TARGET).get();
+
+        if (!brain.hasMemoryValue(MemoryModuleType.LOOK_TARGET)) {
+            brain.setMemory(MemoryModuleType.LOOK_TARGET, new PatchedEntityTracker(target, true));
+        }
+
+        int aimTicks = brain.getMemory(ModBrainMemories.AIM_TICKS.get()).orElse(0);
+        if (brain.hasMemoryValue(MemoryModuleType.WALK_TARGET)) {
+            aimTicks = 0;
+        } else {
+            aimTicks += mob.getSensing().hasLineOfSight(target) ? 1 : -1;
+            aimTicks = Mth.clamp(aimTicks, MIN_AIM_TICKS, MAX_AIM_TICKS);
+        }
+
+        brain.setMemory(ModBrainMemories.AIM_TICKS.get(), aimTicks);
+    }
+}
