@@ -21,6 +21,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -37,6 +39,7 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import top.ribs.scguns.ScorchedGuns;
 import top.ribs.scguns.common.Gun;
+import top.ribs.scguns.init.ModEffects;
 import top.ribs.scguns.init.ModItems;
 
 public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, BulletSpawnOffset{
@@ -236,5 +239,15 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
                 1.2F
             )
         );
+    }
+
+    @Override
+    public boolean addEffect(MobEffectInstance p_147208_, Entity p_147209_) {
+        return p_147208_.getEffect().equals(ModEffects.SULFUR_POISONING.get()) ? false :  super.addEffect(p_147208_, p_147209_);
+    }
+
+    @Override
+    public boolean isOnFire() {
+        return false;
     }
 }

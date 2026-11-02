@@ -1,6 +1,8 @@
 package net.atobaazul.scguns_sg.common.entity.PiglinJunker;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -20,13 +22,22 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.DoNothing;
+import net.minecraft.world.entity.ai.behavior.RandomStroll;
+import net.minecraft.world.entity.ai.behavior.RunOne;
 import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
+import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
+import net.minecraft.world.entity.ai.behavior.StartAttacking;
 import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
+import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
 import net.minecraft.world.entity.ai.sensing.Sensor;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.schedule.Activity;
@@ -62,7 +73,7 @@ public class PiglinJunkerAi {
 
     public static <T extends PathfinderMob> Brain<?> makeBrain(T mob, Brain<T> brain) {
         BrainCommons.initCoreWithStunActivity(brain, PiglinJunkerEntity.instance.getStunDuration());
-        BrainCommons.initIdleActivity(brain);
+        initIdleActivity(brain);
         BrainCommons.initStunnedActivity(brain);
         initFightActivity(mob, brain);
         brain.setCoreActivities(ImmutableSet.of(Activity.CORE));
@@ -70,6 +81,12 @@ public class PiglinJunkerAi {
         brain.useDefaultActivity();
         return brain;
     }
+
+    //mixin and change from scgextra to add piglin faction mobs
+    public static final Set<EntityType<?>> FRIENDLIES = Set.of(
+        EntityType.PIGLIN,
+        EntityType.PIGLIN_BRUTE
+    );
 
     public static <T extends PathfinderMob> Brain.Provider<T> brainProvider() {
         return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
@@ -101,7 +118,8 @@ public class PiglinJunkerAi {
                 },
                 new BreakBlocksToTarget(PiglinJunkerAi::canBreak, 20),
                 new MountedgunShoot(160, 2, 4),
-                new Breathe(300, 8)
+                new Breathe(300, 8),
+                new SummonBrutes(400, 6)
             )), ImmutableSet.of(
                 Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT)
             ), ImmutableSet.of(
@@ -136,5 +154,36 @@ public class PiglinJunkerAi {
         if (hardness >= 8) return false;  // Ex. Iron Block: 5, Stone: 1.5
 
         return !state.is(BlockTags.NEEDS_DIAMOND_TOOL);
+    }
+
+    public static void initIdleActivity(Brain<? extends PathfinderMob> brain) {
+        brain.addActivity(Activity.IDLE, 10, ImmutableList.of(
+            StartAttacking.create(PiglinJunkerAi::getHurtByNonFriendlies),
+            StartAttacking.create(BrainUtils::findNearestVisibleAttackablePlayer),
+            StartAttacking.create(PiglinJunkerAi::findNearestAttackableFactionEnemy),
+            new RunOne<>(ImmutableList.of(
+                    Pair.of(RandomStroll.stroll(1.0F), 2),
+                    Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2),
+                    Pair.of(new DoNothing(30, 60), 1)
+            ))
+        ));
+    }
+    public static Optional<? extends LivingEntity> findNearestAttackableFactionEnemy(LivingEntity mob) {
+        Brain<? extends LivingEntity> brain = mob.getBrain();
+        Optional<NearestVisibleLivingEntities> optional = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
+        return optional.flatMap(entities -> entities.findClosest(
+                entity -> mob.canAttack(entity) && !FRIENDLIES.contains(entity.getType())));
+    }
+    public static Optional<LivingEntity> getHurtByNonFriendlies(LivingEntity mob) {
+        return mob.getBrain()
+                .getMemory(MemoryModuleType.HURT_BY_ENTITY)
+                .filter(entity -> mob != entity)
+                .filter(entity -> !FRIENDLIES.contains(entity.getType()))
+                .filter(mob::canAttack)
+                .filter(entity -> isWithinRange(mob, entity));
+    }
+    private static boolean isWithinRange(LivingEntity entity, LivingEntity target) {
+        double range = Math.max(entity.getAttributeValue(Attributes.FOLLOW_RANGE), 2.0D);
+        return entity.closerThan(target, range);
     }
 }
