@@ -54,6 +54,8 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     private static final RawAnimation STUN_END = RawAnimation.begin().thenPlay("stun_end");
     private static final RawAnimation DEATH = RawAnimation.begin().thenPlayAndHold("death");
 
+    public static final Vec3 BAD_TEETHS = new Vec3(0 / 16.0D, 21D / 16.0D, -24D / 16.0D * -1D);
+
     public static final StunnableHog instance = new StunnableHog(
         9, 
         45, 
@@ -126,7 +128,7 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
             return PlayState.CONTINUE;
         })
             .triggerableAnim("melee", MELEE)
-            .triggerableAnim("breath", BREATH)
+            .triggerableAnim("breathe", BREATH)
             .triggerableAnim("shoot", (ctr)->{
                 if (((this.getX() - this.xo)*(this.getX() - this.xo))+((this.getZ() - this.zo)*(this.getZ() - this.zo))>0.0002) {
                     return SHOOT_WALKING;
@@ -217,7 +219,6 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
 
     @Override
     public void onGunFire(SimulatedGun gun, Vec3 targetPos) {
-        ScorchedGuns.LOGGER.info("GUN FIRE");
         Gun.Display.Flash flash = ModItems.BIRDFEEDER.get().getGun().getDisplay().getFlash();
         if (flash == null) return;
         ResourceLocation flashTexture = 

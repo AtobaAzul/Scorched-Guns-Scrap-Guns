@@ -20,6 +20,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
@@ -55,7 +56,8 @@ public class PiglinJunkerAi {
         ModBrainMemories.STUNNED.get(),
         ModBrainMemories.STUNNED_COOLING_DOWN.get(),
         ModBrainMemories.HEADSHOT_COUNT.get(),
-        ModBrainMemories.DELAYED_MELEE.get()
+        ModBrainMemories.DELAYED_MELEE.get(),
+        ModBrainMemories.BREATHING.get()
     );
 
     public static <T extends PathfinderMob> Brain<?> makeBrain(T mob, Brain<T> brain) {
@@ -86,9 +88,20 @@ public class PiglinJunkerAi {
                 ),
                 List.of(
                     2400
-                )),
+                )){
+                    @Override
+                    protected boolean checkExtraStartConditions(ServerLevel level, Mob mob) {
+                        return super.checkExtraStartConditions(level, mob) && (mob.getBrain().hasMemoryValue(ModBrainMemories.BREATHING.get()) ? !mob.getBrain().getMemory(ModBrainMemories.BREATHING.get()).get() : true);
+                    }
+
+                    @Override
+                    protected boolean canStillUse(ServerLevel level, Mob mob, long gameTime) {
+                        return super.canStillUse(level, mob, gameTime) && (mob.getBrain().hasMemoryValue(ModBrainMemories.BREATHING.get()) ? !mob.getBrain().getMemory(ModBrainMemories.BREATHING.get()).get() : true);
+                    }
+                },
                 new BreakBlocksToTarget(PiglinJunkerAi::canBreak, 20),
-                new MountedgunShoot(160, 2, 4)
+                new MountedgunShoot(160, 2, 4),
+                new Breathe(300, 8)
             )), ImmutableSet.of(
                 Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT)
             ), ImmutableSet.of(

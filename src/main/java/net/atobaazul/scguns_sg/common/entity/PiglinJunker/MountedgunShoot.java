@@ -37,12 +37,12 @@ public class MountedgunShoot extends Behavior<Mob>{
     @Override
     protected boolean checkExtraStartConditions(ServerLevel level, Mob entity) {
         if(this.cooldown>0)this.cooldown--;
-        return this.cooldown <= 0 && !entity.getBrain().hasMemoryValue(ModBrainMemories.DELAYED_MELEE.get()) && entity.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET);
+        return this.cooldown <= 0 && !entity.getBrain().hasMemoryValue(ModBrainMemories.DELAYED_MELEE.get()) && entity.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET) && (entity.getBrain().hasMemoryValue(ModBrainMemories.BREATHING.get()) ? !entity.getBrain().getMemory(ModBrainMemories.BREATHING.get()).get() : true);
     }
 
     @Override
     protected boolean canStillUse(ServerLevel level, Mob entity, long gameTime) {
-        return entity.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET) && !entity.getBrain().hasMemoryValue(ModBrainMemories.DELAYED_MELEE.get());
+        return entity.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET) && !entity.getBrain().hasMemoryValue(ModBrainMemories.DELAYED_MELEE.get()) && (entity.getBrain().hasMemoryValue(ModBrainMemories.BREATHING.get()) ? !entity.getBrain().getMemory(ModBrainMemories.BREATHING.get()).get() : true);
     }
 
     @Override

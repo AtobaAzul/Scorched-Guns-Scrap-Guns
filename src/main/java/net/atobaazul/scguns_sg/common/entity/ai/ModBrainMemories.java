@@ -35,6 +35,10 @@ public class ModBrainMemories {
             .register("headshot_count", () -> new MemoryModuleType<>(Optional.of(Codec.INT)));
     public static final Supplier<MemoryModuleType<Long>> DELAYED_MELEE = MEMORY_MODULE_TYPES
             .register("delayed_melee", () -> new MemoryModuleType<>(Optional.of(Codec.LONG)));
+    
+    // Mob Specific
+    public static final Supplier<MemoryModuleType<Boolean>> BREATHING = MEMORY_MODULE_TYPES
+            .register("breathing", () -> new MemoryModuleType<>(Optional.of(Codec.BOOL)));
 
         public static final int MAX_AIM_TICKS = 60;
         public static final int MIN_AIM_TICKS = -20;
