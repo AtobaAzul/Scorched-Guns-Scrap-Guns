@@ -31,6 +31,7 @@ public class ModCreativeTabs {
 
         addItem(output, SCRAP_BLUEPRINT);
         addItem(output, SCRAP_CORE);
+        addItem(output, PIGLIN_JUNKER_SPAWN_EGG);
     }).build());
 
     public static void register(IEventBus eventBus) {

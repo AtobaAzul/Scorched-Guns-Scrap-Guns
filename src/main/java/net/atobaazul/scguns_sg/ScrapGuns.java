@@ -36,7 +36,7 @@ public class ScrapGuns {
         MinecraftForge.EVENT_BUS.register(this);
 
         ModItems.REGISTER.register(modEventBus);
-        ModEntities.REGISTER.register(modEventBus);
+        ModEntities.register(modEventBus);
         ModSoundEvents.REGISTER.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModParticleTypes.PARTICLE_TYPES.register(modEventBus);

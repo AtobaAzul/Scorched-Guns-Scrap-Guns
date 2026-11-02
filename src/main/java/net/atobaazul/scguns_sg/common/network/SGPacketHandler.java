@@ -8,6 +8,8 @@ import com.mrcrayfish.framework.network.message.IMessage;
 
 import net.minecraft.resources.ResourceLocation;
 
+import net.atobaazul.scguns_sg.ScrapGuns;
+
 import java.util.function.Supplier;
 /**
  * @author: Krei(github: rekales)
@@ -17,7 +19,7 @@ public class SGPacketHandler {
     private static FrameworkNetwork playChannel;
 
     public static void init() {
-        playChannel = FrameworkAPI.createNetworkBuilder(ResourceLocation.fromNamespaceAndPath("scguns_sg", "play"), 1)
+        playChannel = FrameworkAPI.createNetworkBuilder(ResourceLocation.fromNamespaceAndPath(ScrapGuns.MOD_ID, "play"), 1)
                 .registerPlayMessage(GunFlashMessage.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .build();
     }

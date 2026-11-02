@@ -22,6 +22,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         //simpleItem(HEX_ROUND);
 
         //withExistingParent(GRAVEKEEPER_GHOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(PIGLIN_JUNKER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         simpleItem(SCRAP_BLUEPRINT);
         simpleItem(SCRAP_CORE);
     }

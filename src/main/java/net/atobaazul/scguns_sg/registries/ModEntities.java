@@ -1,14 +1,24 @@
 package net.atobaazul.scguns_sg.registries;
 
 
-import net.minecraft.network.chat.Component;
+import net.atobaazul.scguns_sg.common.entity.PiglinJunker.PiglinJunkerEntity;
+import net.atobaazul.scguns_sg.common.entity.PiglinJunker.PiglinJunkerRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
 import java.util.function.BiFunction;
 
@@ -29,4 +39,25 @@ public class ModEntities {
             .sized(0.8f,2.0f)
             .build(new ResourceLocation(MOD_ID, "gravekeeper_ghoul").toString())
     );*/
+
+    public static final RegistryObject<EntityType<PiglinJunkerEntity>> PIGLIN_JUNKER = REGISTER.register("piglin_junker", () -> EntityType.Builder.of(PiglinJunkerEntity::new, MobCategory.MONSTER)
+            .sized(2.6f,3.375f)
+            .build(ResourceLocation.fromNamespaceAndPath(MOD_ID, "piglin_junker").toString())
+    );
+
+    public static void register(IEventBus modEventBus) {
+        REGISTER.register(modEventBus);
+        modEventBus.addListener(ModEntities::registerAttributes);
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            modEventBus.addListener(ModEntities::onClientSetup);
+        }
+    }
+    private static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(PIGLIN_JUNKER.get(), PiglinJunkerEntity.createAttributes().build());
+    }
+
+    @OnlyIn(value = Dist.CLIENT)
+    private static void onClientSetup(FMLClientSetupEvent event) {
+        EntityRenderers.register(ModEntities.PIGLIN_JUNKER.get(), (ctx) -> new PiglinJunkerRenderer<>(ctx, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(MOD_ID, "piglin_junker/piglin_junker"))));
+    }
 }

@@ -2,6 +2,7 @@ package net.atobaazul.scguns_sg.registries;
 
 
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -171,6 +172,8 @@ public class ModItems {
 
     //mob spawn eggs example
     //public static final RegistryObject<Item> GRAVEKEEPER_GHOUL_SPAWN_EGG = REGISTER.register("gravekeeper_ghoul_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.GRAVEKEEPER_GHOUL, 0x4f6655, 0xa2acc2, new Item.Properties()));
+    
+    public static final RegistryObject<Item> PIGLIN_JUNKER_SPAWN_EGG = REGISTER.register("piglin_junker_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PIGLIN_JUNKER, 0xe02d3c, 0xebdf3b, new Item.Properties()));
 
     //we don't want to not register the item when create isn't loaded, so we register it as a basic item instead.
     private static RegistryObject<Item> sequencedIngredient(String name) {

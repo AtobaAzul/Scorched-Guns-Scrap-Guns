@@ -7,6 +7,8 @@ import net.minecraftforge.common.data.LanguageProvider;
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 import static net.atobaazul.scguns_sg.registries.ModItems.*;
 
+import net.atobaazul.scguns_sg.registries.ModEntities;
+
 public class ModLangProvider extends LanguageProvider {
     public ModLangProvider(PackOutput output) {
         super(output, MOD_ID, "en_us");
@@ -28,7 +30,9 @@ public class ModLangProvider extends LanguageProvider {
         addItem(TURRET, "Looted Turret");
         addItem(SCRAP_BLUEPRINT, "Scrap Blueprint");
         addItem(SCRAP_CORE, "Scrap Core");
-        //addEntityType(ModEntities.GRAVEKEEPER_GHOUL, "Gravekeeper Ghoul");
+        addItem(PIGLIN_JUNKER_SPAWN_EGG, "Piglin Junker Spawn Egg");
+        //addEntityType(ModEntities.GRAVEKEEPER_GHOUL, "Gravekeeper Ghoul")
+        addEntityType(ModEntities.PIGLIN_JUNKER, "Piglin Junker");
 
         add("creativetab.scguns_sg_tab", "Scorched Guns: Scrap Guns");
         //add("tooltip.hex_round.magic_damage", "Deals %s of the bullet damage as magic damage.");
