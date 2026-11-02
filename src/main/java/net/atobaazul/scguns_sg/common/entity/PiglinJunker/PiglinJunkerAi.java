@@ -18,6 +18,7 @@ import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainSensors;
 import net.atobaazul.scguns_sg.common.entity.util.BrainCommons;
 import net.atobaazul.scguns_sg.common.entity.util.BrainUtils;
+import net.atobaazul.scguns_sg.registries.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -85,7 +86,8 @@ public class PiglinJunkerAi {
     //mixin and change from scgextra to add piglin faction mobs
     public static final Set<EntityType<?>> FRIENDLIES = Set.of(
         EntityType.PIGLIN,
-        EntityType.PIGLIN_BRUTE
+        EntityType.PIGLIN_BRUTE,
+        ModEntities.PIGLIN_JUNKER.get()
     );
 
     public static <T extends PathfinderMob> Brain.Provider<T> brainProvider() {

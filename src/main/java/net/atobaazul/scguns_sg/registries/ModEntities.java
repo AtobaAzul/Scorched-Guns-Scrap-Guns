@@ -3,6 +3,7 @@ package net.atobaazul.scguns_sg.registries;
 
 import net.atobaazul.scguns_sg.common.entity.PiglinJunker.PiglinJunkerEntity;
 import net.atobaazul.scguns_sg.common.entity.PiglinJunker.PiglinJunkerRenderer;
+import net.atobaazul.scguns_sg.common.entity.parts.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -14,11 +15,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
+import top.ribs.scguns.common.BoundingBoxManager;
 
 import java.util.function.BiFunction;
 
@@ -48,9 +51,48 @@ public class ModEntities {
     public static void register(IEventBus modEventBus) {
         REGISTER.register(modEventBus);
         modEventBus.addListener(ModEntities::registerAttributes);
+        modEventBus.addListener(ModEntities::onCommonSetup);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             modEventBus.addListener(ModEntities::onClientSetup);
         }
+    }
+    private static void onCommonSetup(FMLCommonSetupEvent event) {
+        BoundingBoxManager.registerHeadshotBox(ModEntities.PIGLIN_JUNKER.get(), new OffsetRotatedHeadshotBox<>(
+            16, 
+            18, 
+            10, 
+            0, 
+            false, 
+            true
+        ));
+        WeakPointBoxManager.registerWeakPointBox(ModEntities.PIGLIN_JUNKER.get(), 
+            new WeakPointBox<>(
+                new OffsetRotatedHeadshotBox<>(
+                    6.0, 
+                    30.0, 
+                    30.0, 
+                    0.0F, 
+                    -4.0, 
+                    -25f,
+                    false, 
+                    true, 
+                    true
+                )
+            ),
+            new WeakPointBox<>(
+                new OffsetRotatedHeadshotBox<>(
+                    6.0, 
+                    30.0, 
+                    38.0, 
+                    0.0F, 
+                    5.0, 
+                    10,
+                    false, 
+                    true, 
+                    true
+                )
+            )
+        );
     }
     private static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(PIGLIN_JUNKER.get(), PiglinJunkerEntity.createAttributes().build());
