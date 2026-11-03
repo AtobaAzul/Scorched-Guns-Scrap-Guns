@@ -1,9 +1,12 @@
 package net.atobaazul.scguns_sg.datagen.providers.server;
 
+import net.atobaazul.scguns_sg.registries.ModEntities;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import top.ribs.scguns.init.ModTags;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,5 +26,9 @@ public class ModEntityTagsProvider extends EntityTypeTagsProvider {
                 .add(ModEntities.ROCKET.get())
                 .add(ModEntities.MICROJET.get())
                 .add(ModEntities.SHATTER_ROUND_PROJECTILE.get());*/
+        this.tag(ModTags.Entities.FIRE)
+                .add(ModEntities.PIGLIN_JUNKER.get());
+        this.tag(ModTags.Entities.HEAVY)
+                .add(ModEntities.PIGLIN_JUNKER.get());
     }
 }
