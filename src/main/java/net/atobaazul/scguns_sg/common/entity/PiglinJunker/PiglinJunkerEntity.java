@@ -15,6 +15,7 @@ import net.atobaazul.scguns_sg.common.entity.util.MobUtil;
 import net.atobaazul.scguns_sg.common.entity.util.StunnableHog;
 import net.atobaazul.scguns_sg.common.network.GunFlashMessage;
 import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -58,6 +59,11 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     private static final RawAnimation DEATH = RawAnimation.begin().thenPlayAndHold("death");
 
     public static final Vec3 BAD_TEETHS = new Vec3(0 / 16.0D, 21D / 16.0D, -24D / 16.0D * -1D);
+    
+    public static final Vec3 EXHAUST_1 = new Vec3(-20/16.0D, 47D/16.0D, 2D/16.0D * -1D);
+    public static final Vec3 EXHAUST_2 = new Vec3(13/16.0D, 48D/16.0D, 7D/16.0D * -1D);
+    
+    public static final Vec3 EXHAUST_BARREL = new Vec3(25/16.0D * -1, 26D/16.0D, -33D/16.0D * -1D);
 
     public static final StunnableHog instance = new StunnableHog(
         9, 
@@ -184,6 +190,13 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
                 this.setStunTicksRemaining(this.getBrain().getTimeUntilExpiry(ModBrainMemories.STUNNED.get()));
             }else{
                 this.setStunTicksRemaining(Long.valueOf(-1));
+            }
+        }else{
+            if(this.level().getGameTime()%10==0){
+                Vec3 ex_pos_1 = this.position().add(PiglinJunkerEntity.EXHAUST_1.yRot(-this.yBodyRot * Mth.DEG_TO_RAD));
+                Vec3 ex_pos_2 = this.position().add(PiglinJunkerEntity.EXHAUST_2.yRot(-this.yBodyRot * Mth.DEG_TO_RAD));
+                this.level().addAlwaysVisibleParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, ex_pos_1.x, ex_pos_1.y, ex_pos_1.z, 0, 0.2, 0);
+                this.level().addAlwaysVisibleParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, ex_pos_2.x, ex_pos_2.y, ex_pos_2.z, 0, 0.2, 0);
             }
         }
     }

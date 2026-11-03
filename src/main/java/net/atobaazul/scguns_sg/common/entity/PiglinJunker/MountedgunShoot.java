@@ -6,12 +6,16 @@ import java.util.function.BiFunction;
 
 import net.atobaazul.scguns_sg.common.entity.ai.AccuracyBuildup;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
+import net.atobaazul.scguns_sg.common.entity.ai.PatchedEntityTracker;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
+import net.minecraft.world.phys.Vec3;
 
 public class MountedgunShoot extends Behavior<Mob>{
 
@@ -60,21 +64,17 @@ public class MountedgunShoot extends Behavior<Mob>{
         if(this.numberOfShots>=20)return;
         if(entity instanceof PiglinJunkerEntity owner){
             LivingEntity target = owner.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-            double dX = target.getX() - owner.getX();
-            double dY = target.getEyeY() - owner.getEyeY();
-            double dZ = target.getZ() - owner.getZ();
-            double dist = Math.sqrt(dX * dX + dZ * dZ);
-            float yaw = (float) (Math.atan2(dZ, dX) * (180D / Math.PI)) - 90.0F;
-            float pitch = (float) -(Math.atan2(dY, dist) * (180D / Math.PI));
-            owner.setYRot(yaw);
-            owner.setXRot(pitch);
-            owner.setYHeadRot(yaw);
+            owner.getLookControl().setLookAt(target);
+            owner.lookAt(target, 360, 360);
+            owner.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new PatchedEntityTracker(target, true));
             if(this.ticks>this.startAnimDuration){
                 if(this.timer>0)this.timer--;
                 if(this.timer <= 0){
                     this.numberOfShots++;
                     this.timer = this.shootEvery;
                     owner.barrel.tick(target, this.accuracyFunc.apply(entity, true));
+                    Vec3 ex_pos_1 = owner.position().add(PiglinJunkerEntity.EXHAUST_BARREL.yRot(-owner.yBodyRot * Mth.DEG_TO_RAD));
+                    level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, ex_pos_1.x, ex_pos_1.y, ex_pos_1.z, 3, 0, 0, 0, 0.1);
                 }
             }
         }
