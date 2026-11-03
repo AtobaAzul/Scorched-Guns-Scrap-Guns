@@ -6,7 +6,8 @@
   "refmap": "scguns_sg.refmap.json",
   "mixins": [
     "ServerPlayHandlerMixin",
-    "ProjectileEntityMixin"
+    "ProjectileEntityMixin",
+    "RaidManagerMixin"
   ],
   "client": [
   ],

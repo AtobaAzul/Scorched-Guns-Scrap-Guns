@@ -17,7 +17,7 @@ public class ModBrainActivities {
             .create(ForgeRegistries.ACTIVITIES, ScrapGuns.MOD_ID);
 
     public static final Supplier<Activity> STUNNED = ACTIVITIES
-            .register("stunned", () -> new Activity("stunned"));
+            .register("stunned_activity", () -> new Activity("stunned_activity"));
 
 
     public static void register(IEventBus modEventBus) {

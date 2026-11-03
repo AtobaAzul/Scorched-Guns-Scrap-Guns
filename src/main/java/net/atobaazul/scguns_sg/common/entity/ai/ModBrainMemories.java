@@ -20,21 +20,21 @@ public class ModBrainMemories {
             .create(ForgeRegistries.MEMORY_MODULE_TYPES, ScrapGuns.MOD_ID);
 
     public static final Supplier<MemoryModuleType<Integer>> AIM_TICKS = MEMORY_MODULE_TYPES
-            .register("aim_ticks", () -> new MemoryModuleType<>(Optional.of(Codec.INT)));
+            .register("aim_ticks_memory", () -> new MemoryModuleType<>(Optional.of(Codec.INT)));
     public static final Supplier<MemoryModuleType<Float>> WEAPON_IDEAL_RANGE = MEMORY_MODULE_TYPES
-            .register("approach_dist", () -> new MemoryModuleType<>(Optional.of(Codec.FLOAT)));
+            .register("approach_dist_memory", () -> new MemoryModuleType<>(Optional.of(Codec.FLOAT)));
     public static final Supplier<MemoryModuleType<Float>> WEAPON_MAX_RANGE = MEMORY_MODULE_TYPES
-            .register("weapon_range", () -> new MemoryModuleType<>(Optional.of(Codec.FLOAT)));
+            .register("weapon_range_memory", () -> new MemoryModuleType<>(Optional.of(Codec.FLOAT)));
     public static final Supplier<MemoryModuleType<SimulatedGun>> SIMULATED_GUN = MEMORY_MODULE_TYPES
-            .register("simulated_gun", () -> new MemoryModuleType<>(Optional.empty()));
+            .register("simulated_gun_memory", () -> new MemoryModuleType<>(Optional.empty()));
     public static final Supplier<MemoryModuleType<Boolean>> STUNNED = MEMORY_MODULE_TYPES
-            .register("stunned", () -> new MemoryModuleType<>(Optional.of(Codec.BOOL)));
+            .register("stunned_memory", () -> new MemoryModuleType<>(Optional.of(Codec.BOOL)));
     public static final Supplier<MemoryModuleType<Boolean>> STUNNED_COOLING_DOWN = MEMORY_MODULE_TYPES
-            .register("stunned_cooling_down", () -> new MemoryModuleType<>(Optional.of(Codec.BOOL)));
+            .register("stunned_cooling_down_memory", () -> new MemoryModuleType<>(Optional.of(Codec.BOOL)));
     public static final Supplier<MemoryModuleType<Integer>> HEADSHOT_COUNT = MEMORY_MODULE_TYPES
-            .register("headshot_count", () -> new MemoryModuleType<>(Optional.of(Codec.INT)));
+            .register("headshot_count_memory", () -> new MemoryModuleType<>(Optional.of(Codec.INT)));
     public static final Supplier<MemoryModuleType<Long>> DELAYED_MELEE = MEMORY_MODULE_TYPES
-            .register("delayed_melee", () -> new MemoryModuleType<>(Optional.of(Codec.LONG)));
+            .register("delayed_melee_memory", () -> new MemoryModuleType<>(Optional.of(Codec.LONG)));
     
     // Mob Specific
     public static final Supplier<MemoryModuleType<Boolean>> BREATHING = MEMORY_MODULE_TYPES
