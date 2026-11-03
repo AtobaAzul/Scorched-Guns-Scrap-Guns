@@ -18,10 +18,12 @@ import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainSensors;
 import net.atobaazul.scguns_sg.common.entity.util.BrainCommons;
 import net.atobaazul.scguns_sg.common.entity.util.BrainUtils;
-import net.atobaazul.scguns_sg.registries.ModEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -83,11 +85,11 @@ public class PiglinJunkerAi {
         return brain;
     }
 
-    //mixin and change from scgextra to add piglin faction mobs
+    public static final TagKey<EntityType<?>> tag = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("scgextra", "factions/piglin"));
+
     public static final Set<EntityType<?>> FRIENDLIES = Set.of(
         EntityType.PIGLIN,
-        EntityType.PIGLIN_BRUTE,
-        ModEntities.PIGLIN_JUNKER.get()
+        EntityType.PIGLIN_BRUTE
     );
 
     public static <T extends PathfinderMob> Brain.Provider<T> brainProvider() {
@@ -174,13 +176,13 @@ public class PiglinJunkerAi {
         Brain<? extends LivingEntity> brain = mob.getBrain();
         Optional<NearestVisibleLivingEntities> optional = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
         return optional.flatMap(entities -> entities.findClosest(
-                entity -> mob.canAttack(entity) && !FRIENDLIES.contains(entity.getType())));
+                entity -> mob.canAttack(entity) && !FRIENDLIES.contains(entity.getType()) && !entity.getType().is(tag)));
     }
     public static Optional<LivingEntity> getHurtByNonFriendlies(LivingEntity mob) {
         return mob.getBrain()
                 .getMemory(MemoryModuleType.HURT_BY_ENTITY)
                 .filter(entity -> mob != entity)
-                .filter(entity -> !FRIENDLIES.contains(entity.getType()))
+                .filter(entity -> !FRIENDLIES.contains(entity.getType()) && !entity.getType().is(tag))
                 .filter(mob::canAttack)
                 .filter(entity -> isWithinRange(mob, entity));
     }

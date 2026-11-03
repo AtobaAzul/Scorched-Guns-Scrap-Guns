@@ -15,13 +15,17 @@ import net.atobaazul.scguns_sg.common.entity.util.MobUtil;
 import net.atobaazul.scguns_sg.common.entity.util.StunnableHog;
 import net.atobaazul.scguns_sg.common.network.GunFlashMessage;
 import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -30,6 +34,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -262,5 +267,34 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     @Override
     public boolean isOnFire() {
         return false;
+    }
+    @Override
+    public float getVoicePitch() {
+        return 0.2f;
+    }
+    @Override
+    protected float getSoundVolume() {
+        return 2;
+    }
+    @Override
+    protected SoundEvent getHurtSound(DamageSource p_33034_) {
+        return SoundEvents.PIGLIN_BRUTE_HURT;
+    }
+    @Override
+    protected void playStepSound(BlockPos p_20135_, BlockState p_20136_) {
+        this.playSound(SoundEvents.PIGLIN_BRUTE_STEP, this.getSoundVolume() * 0.15F, this.getVoicePitch());
+    }
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.PIGLIN_BRUTE_DEATH;
+    }
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.PIGLIN_BRUTE_AMBIENT;
+    }
+    @Override
+    public void die(DamageSource p_21014_) {
+        this.stopTriggeredAnimation("behavior", null);
+        super.die(p_21014_);
     }
 }

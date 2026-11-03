@@ -100,6 +100,6 @@ public class ModEntities {
 
     @OnlyIn(value = Dist.CLIENT)
     private static void onClientSetup(FMLClientSetupEvent event) {
-        EntityRenderers.register(ModEntities.PIGLIN_JUNKER.get(), (ctx) -> new PiglinJunkerRenderer<>(ctx, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(MOD_ID, "piglin_junker/piglin_junker"))).hasGlowLayer());
+        EntityRenderers.register(ModEntities.PIGLIN_JUNKER.get(), (ctx) -> new PiglinJunkerRenderer<>(ctx, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(MOD_ID, "piglin_junker/piglin_junker"))).hasGlowLayer().noDeathTilt().noDeathRedTint());
     }
 }
