@@ -8,10 +8,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import top.ribs.scguns.Config;
 import top.ribs.scguns.common.Gun;
-import top.ribs.scguns.common.item.gun.AnimatedScrapGunItem;
+import top.ribs.scguns.common.item.scrapgun.AnimatedScrapGunItem;
 import top.ribs.scguns.event.GunEventBus;
 import top.ribs.scguns.event.GunFireEvent;
-import top.ribs.scguns.item.GunItem;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 

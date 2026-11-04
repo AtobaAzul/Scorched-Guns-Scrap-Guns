@@ -1,4 +1,4 @@
-package top.ribs.scguns.common.item.gun;
+package top.ribs.scguns.common.item.scrapgun;
 
 import net.atobaazul.scguns_sg.ScrapGuns;
 import net.atobaazul.scguns_sg.client.render.BlinkieGunRenderer;
@@ -10,7 +10,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import top.ribs.scguns.client.render.gun.animated.AnimatedGunRenderer;
-import top.ribs.scguns.entity.projectile.RocketEntity;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
 
 import java.util.function.Consumer;
@@ -52,14 +51,9 @@ public class AnimatedScrapGunItem extends AnimatedGunItem {
 
     @OnlyIn(Dist.CLIENT)
     private AnimatedGunRenderer getRenderer() {
-        ScrapGuns.LOGGER.info("GET RENDERER FOR: {}", this.gunID);
         if (gunID.matches("rokkit_launcha")) {
-            ScrapGuns.LOGGER.info("rokkit");
-
             return new RokkitGunRenderer(new ResourceLocation("scguns", this.gunID));
         } else if (gunID.matches("blinkie")) {
-            ScrapGuns.LOGGER.info("blinkie");
-
             return new BlinkieGunRenderer(new ResourceLocation("scguns", this.gunID));
         }
         return new AnimatedGunRenderer(new ResourceLocation("scguns", this.gunID));

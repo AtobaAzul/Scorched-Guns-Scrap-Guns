@@ -10,8 +10,7 @@ import top.ribs.scguns.init.ModSounds;
 import top.ribs.scguns.item.BlueprintItem;
 import top.ribs.scguns.item.GunItem;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
-import top.ribs.scguns.common.item.gun.AnimatedScrapGunItem;
-import top.ribs.scguns.util.Constants;
+import top.ribs.scguns.common.item.scrapgun.AnimatedScrapGunItem;
 
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 import static net.atobaazul.scguns_sg.util.CompatManager.CREATE_ENABLED;

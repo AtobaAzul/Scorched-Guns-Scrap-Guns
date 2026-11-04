@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import top.ribs.scguns.Config;
 import top.ribs.scguns.common.Gun;
-import top.ribs.scguns.common.item.gun.AnimatedScrapGunItem;
+import top.ribs.scguns.common.item.scrapgun.AnimatedScrapGunItem;
 import top.ribs.scguns.common.network.ServerPlayHandler;
 import top.ribs.scguns.init.ModEnchantments;
 import top.ribs.scguns.item.GunItem;
