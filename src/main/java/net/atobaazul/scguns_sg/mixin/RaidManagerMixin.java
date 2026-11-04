@@ -20,7 +20,7 @@ public class RaidManagerMixin {
     @WrapMethod(method = "spawnBoss")
     private Mob atSpawnBoss(ActiveRaid raid, ServerLevel level, Vec3 spawnPos, Operation<Mob> original) {
         if (raid.getConfig().raidId().contentEquals("piglin")) {
-            if(level.getRandom().nextFloat() <= 0.15f){
+            if(level.getRandom().nextFloat() <= 0.4f){
                 RaidConfig.BossData bossData = raid.getConfig().boss();
                 PiglinJunkerEntity boss = ModEntities.PIGLIN_JUNKER.get().create(level);
                 boss.setPos(spawnPos.x, spawnPos.y, spawnPos.z);

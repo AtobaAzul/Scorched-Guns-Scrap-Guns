@@ -6,7 +6,6 @@ import com.google.common.collect.ImmutableMap;
 
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -16,6 +15,7 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import net.minecraft.world.phys.Vec3;
 import top.ribs.scguns.init.ModEffects;
 import top.ribs.scguns.init.ModParticleTypes;
+import top.ribs.scguns.init.ModTags;
 
 public class Breathe extends Behavior<Mob> {
     private int ticks = 0;
@@ -70,11 +70,31 @@ public class Breathe extends Behavior<Mob> {
             owner.setXRot(pitch);
             owner.setYHeadRot(yaw);
             if(this.ticks>this.startAnimDuration){
-                Vec3 mouth_pos = owner.position().add(PiglinJunkerEntity.BAD_TEETHS.yRot(-owner.yBodyRot * Mth.DEG_TO_RAD));
-                level.sendParticles(ModParticleTypes.SULFUR_SMOKE.get(), mouth_pos.x, mouth_pos.y, mouth_pos.z, 20, 3, -0.01, 3, 0.1);
-                List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class, owner.getBoundingBox().inflate(16, 0, 16), (e)->!e.is(owner));
-                for(LivingEntity le : list){
-                    le.addEffect(new MobEffectInstance(ModEffects.SULFUR_POISONING.get(), 200));
+                if(level.getGameTime()%40==0){
+                    Vec3 lookAngle = owner.getLookAngle();
+                    Vec3 eyePosition = owner.getEyePosition();
+                    double range = 16.0;
+                    double coneAngle = Math.toRadians(20);
+                    double step = 0.5;
+                    for (double distance = 0; distance <= range; distance += step) {
+                        double radius = Math.tan(coneAngle) * distance;
+                        double rad = radius * Math.sqrt(Math.random());
+                        for (double angle = 0; angle < Math.PI * 2; angle += 0.2) {
+                            Vec3 right = lookAngle.cross(new Vec3(0, 1, 0)).normalize();
+                            double offsetX = Math.cos(angle) * rad;
+                            Vec3 forwardPoint = eyePosition.add(lookAngle.scale(distance)).add(right.scale(offsetX));
+                            level.sendParticles(ModParticleTypes.SULFUR_SMOKE.get(), forwardPoint.x, forwardPoint.y-0.5, forwardPoint.z, 1, 0, 0, 0, 0.1);
+                            List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class, owner.getBoundingBox().inflate(16), e -> !e.is(owner));
+                            Vec3 pos = new Vec3(forwardPoint.x, forwardPoint.y-0.5, forwardPoint.z);
+                            for(LivingEntity le : list){
+                                if(le.distanceToSqr(pos)<=2){
+                                    if(!le.getType().is(ModTags.Entities.IGNORES_SULFUR_GAS)){
+                                        le.addEffect(new MobEffectInstance(ModEffects.SULFUR_POISONING.get(), 200));
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

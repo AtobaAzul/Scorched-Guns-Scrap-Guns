@@ -2,7 +2,6 @@ package net.atobaazul.scguns_sg.common.entity.PiglinJunker;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -18,6 +17,7 @@ import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainSensors;
 import net.atobaazul.scguns_sg.common.entity.util.BrainCommons;
 import net.atobaazul.scguns_sg.common.entity.util.BrainUtils;
+import net.atobaazul.scguns_sg.common.entity.util.MobUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -86,11 +86,6 @@ public class PiglinJunkerAi {
     }
 
     public static final TagKey<EntityType<?>> tag = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("scgextra", "factions/piglin"));
-
-    public static final Set<EntityType<?>> FRIENDLIES = Set.of(
-        EntityType.PIGLIN,
-        EntityType.PIGLIN_BRUTE
-    );
 
     public static <T extends PathfinderMob> Brain.Provider<T> brainProvider() {
         return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
@@ -176,13 +171,13 @@ public class PiglinJunkerAi {
         Brain<? extends LivingEntity> brain = mob.getBrain();
         Optional<NearestVisibleLivingEntities> optional = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
         return optional.flatMap(entities -> entities.findClosest(
-                entity -> mob.canAttack(entity) && !FRIENDLIES.contains(entity.getType()) && !entity.getType().is(tag)));
+                entity -> mob.canAttack(entity) && (MobUtil.isEnemyToPiglin(entity) ? true : entity.getType() == EntityType.WITHER_SKELETON) && !entity.getType().is(tag)));
     }
     public static Optional<LivingEntity> getHurtByNonFriendlies(LivingEntity mob) {
         return mob.getBrain()
                 .getMemory(MemoryModuleType.HURT_BY_ENTITY)
                 .filter(entity -> mob != entity)
-                .filter(entity -> !FRIENDLIES.contains(entity.getType()) && !entity.getType().is(tag))
+                .filter(entity -> (MobUtil.isEnemyToPiglin(entity) ? true : entity.getType() == EntityType.WITHER_SKELETON) && !entity.getType().is(tag))
                 .filter(mob::canAttack)
                 .filter(entity -> isWithinRange(mob, entity));
     }
