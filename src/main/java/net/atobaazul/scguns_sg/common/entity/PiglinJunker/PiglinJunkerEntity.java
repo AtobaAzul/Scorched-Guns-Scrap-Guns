@@ -17,14 +17,18 @@ import net.atobaazul.scguns_sg.common.network.GunFlashMessage;
 import net.atobaazul.scguns_sg.common.network.SGPacketHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -82,6 +86,10 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     public final Vec3 BarrelOffest = new Vec3(23f/16f * -1, 25f/16f, -51f/16f * -1);
 
     public final MountedGun barrel;
+
+    private final ServerBossEvent bossEvent =
+        new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.YELLOW, BossEvent.BossBarOverlay.PROGRESS);
+
 
     public PiglinJunkerEntity(EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
@@ -188,6 +196,7 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     public void tick() {
         super.tick();
         if(!this.level().isClientSide()){
+            this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
             if (brain.getTimeUntilExpiry(ModBrainMemories.DELAYED_MELEE.get()) == MELEE_DURATION) {
                 this.triggerAnim("behavior", "melee");
             }
@@ -296,5 +305,27 @@ public class PiglinJunkerEntity extends Monster implements GeoEntity, Gunner, Bu
     public void die(DamageSource p_21014_) {
         this.stopTriggeredAnimation("behavior", null);
         super.die(p_21014_);
+    }
+    @Override
+    public void startSeenByPlayer(ServerPlayer player) {
+        super.startSeenByPlayer(player);
+        this.bossEvent.addPlayer(player);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer player) {
+        super.stopSeenByPlayer(player);
+        this.bossEvent.removePlayer(player);
+    }
+
+    @Override
+    public void setCustomName(Component name) {
+        super.setCustomName(name);
+        this.bossEvent.setName(this.getDisplayName());
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distance) {
+        return false;
     }
 }
