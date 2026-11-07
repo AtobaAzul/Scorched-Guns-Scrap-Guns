@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "scguns:blueprint_scrap"
+    },
+    "C": {
+      "item": "scguns_sg:scrap_core"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "BPB",
+    "PCP",
+    "BPB"
+  ],
+  "result": {
+    "item": "scguns_sg:scrap_blueprint"
+  },
+  "show_notification": false
+}

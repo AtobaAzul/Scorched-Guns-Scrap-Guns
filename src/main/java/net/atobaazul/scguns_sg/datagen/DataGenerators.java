@@ -6,6 +6,7 @@ import net.atobaazul.scguns_sg.datagen.providers.server.ModBlockTagProvider;
 import net.atobaazul.scguns_sg.datagen.providers.server.ModEntityTagsProvider;
 import net.atobaazul.scguns_sg.datagen.providers.server.ModEntityLootTableProvider;
 import net.atobaazul.scguns_sg.datagen.providers.server.ModItemTagsProvider;
+import net.atobaazul.scguns_sg.datagen.providers.server.ModRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -36,6 +37,8 @@ public class DataGenerators {
 
         boolean server = event.includeServer();
         boolean client = event.includeClient();
+
+        generator.addProvider(server, new ModRecipeProvider(packOutput));
 
         generator.addProvider(client,
             new LootTableProvider(packOutput, Collections.emptySet(), List.of(
