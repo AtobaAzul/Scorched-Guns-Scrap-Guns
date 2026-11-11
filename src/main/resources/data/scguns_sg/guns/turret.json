@@ -37,7 +37,6 @@
     "recoilKick": 0.5,
     "spread": 3.0,
     "criticalChance": 0.025,
-    "advantage": "scguns:none",
     "advantage": "scguns:heavy",
     "damageFalloffStart": 18.0,
     "damageFalloffEnd": 45.0,
