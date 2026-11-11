@@ -1,11 +1,9 @@
-package net.atobaazul.scguns_sg.client.render;
+package net.atobaazul.scguns_sg.client.render.gun;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.atobaazul.scguns_sg.ScrapGuns;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -13,9 +11,6 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import top.ribs.scguns.client.render.gun.animated.AnimatedGunRenderer;
 import top.ribs.scguns.common.Gun;
 import top.ribs.scguns.item.animated.AnimatedGunItem;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RokkitGunRenderer extends AnimatedGunRenderer {
     private ItemStack currentRenderStack;
@@ -39,8 +34,6 @@ public class RokkitGunRenderer extends AnimatedGunRenderer {
             bone.updateScale(scale, scale, scale);
         }
     }
-
-
 
     @Override
     public void renderRecursively(PoseStack poseStack, AnimatedGunItem animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

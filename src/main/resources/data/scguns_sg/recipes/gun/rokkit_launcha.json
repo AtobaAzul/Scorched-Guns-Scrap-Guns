@@ -12,10 +12,10 @@
 			"tag": "forge:dyes/red"
 		},
 		"gun_top_internal_2": {
-			"item": "scguns:copper_gun_frame"
+			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_top_barrel_1": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_internal_1": {
 			"item": "scguns:firing_unit"

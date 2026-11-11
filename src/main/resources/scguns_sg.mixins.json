@@ -5,9 +5,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "scguns_sg.refmap.json",
   "mixins": [
-    "ServerPlayHandlerMixin",
+    "MeleeAttackHandlerMixin",
     "ProjectileEntityMixin",
-    "RaidManagerMixin"
+    "RaidManagerMixin",
+    "ServerPlayHandlerMixin"
   ],
   "client": [
   ],

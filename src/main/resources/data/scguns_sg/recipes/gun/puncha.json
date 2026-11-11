@@ -15,7 +15,7 @@
 			"tag": "forge:ingots/copper"
 		},
 		"gun_top_barrel_1": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_top_barrel_2": {
 			"item": "scguns:gun_barrel"
@@ -27,13 +27,13 @@
 			"item": "scguns:gun_parts"
 		},
 		"gun_barrel_1": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_barrel_2": {
 			"item": "scguns:gun_barrel"
 		},
 		"gun_grip": {
-			"item": "scguns:copper_gun_frame"
+			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_magazine": {
 			"item": "scguns:gun_grip"

@@ -24,7 +24,7 @@ public class ModItems {
     // !!! IMPORTANT !!! FOR CUSTOM GUN ITEM CLASSES, THEY NEED TO BE UNDER THE top.ribs.common.item.gun PACKAGE. OTHERWISE RELOADS WILL NOT WORK.
     public static final RegistryObject<AnimatedGunItem> STONKA = REGISTER.register("stonka",
             () -> new AnimatedGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "stonka", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -36,7 +36,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> SLUGGA = REGISTER.register("slugga",
             () -> new AnimatedGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(250).rarity(PIGLISH),
                     "slugga", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -48,7 +48,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> SHOOTA= REGISTER.register("shoota",
             () -> new AnimatedGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "shoota", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -59,7 +59,7 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie", () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(150).rarity(PIGLISH),
                     "blinkie", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -71,7 +71,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> DAKKA= REGISTER.register("dakka",
             () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "dakka", // Model path
                     true,
                     3,
@@ -85,7 +85,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> TAKAH= REGISTER.register("takah",
             () -> new AnimatedGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(250).rarity(PIGLISH),
                     "takah", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -97,7 +97,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> DRUMMA= REGISTER.register("drumma",
             () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "drumma", // Model path
                     true,
                     4,
@@ -111,7 +111,7 @@ public class ModItems {
 
     public static final RegistryObject<AnimatedGunItem> TURRET = REGISTER.register("turret",
             () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "turret", // Model path
                     true,
                     2,
@@ -120,11 +120,11 @@ public class ModItems {
                     ModSounds.RELOAD_END.get(),           // Reload sound end
                     ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
-            )
+            ).setMeleeKnockback(1)
     );
     public static final RegistryObject<AnimatedGunItem> PUNCHA = REGISTER.register("puncha",
             () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "puncha", // Model path
                     true,
                     2,
@@ -133,11 +133,11 @@ public class ModItems {
                     ModSounds.RELOAD_END.get(),           // Reload sound end
                     ModSounds.COPPER_GUN_JAM.get(),      // Ejector sound pull
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
-            )
+            ).setMeleeKnockback(3)
     );
     public static final RegistryObject<AnimatedGunItem> ROKKIT_LAUNCHA = REGISTER.register("rokkit_launcha",
             () -> new AnimatedScrapGunItem(
-                    new Item.Properties().stacksTo(1).durability(600).rarity(PIGLISH),
+                    new Item.Properties().stacksTo(1).durability(150).rarity(PIGLISH),
                     "rokkit_launcha", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
                     ModSounds.MAG_IN.get(),         // Reload sound mag in
@@ -171,7 +171,7 @@ public class ModItems {
 
     //mob spawn eggs example
     //public static final RegistryObject<Item> GRAVEKEEPER_GHOUL_SPAWN_EGG = REGISTER.register("gravekeeper_ghoul_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.GRAVEKEEPER_GHOUL, 0x4f6655, 0xa2acc2, new Item.Properties()));
-    
+
     public static final RegistryObject<Item> PIGLIN_JUNKER_SPAWN_EGG = REGISTER.register("piglin_junker_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.PIGLIN_JUNKER, 0xFFFFFF, 0xFFFFFF, new Item.Properties()));
 
     //we don't want to not register the item when create isn't loaded, so we register it as a basic item instead.

@@ -12,7 +12,7 @@
 			"tag": "forge:dyes/red"
 		},
 		"gun_top_internal_2": {
-			"item": "scguns:copper_gun_frame"
+			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_top_barrel_1": {
 			"item": "scguns:gun_grip"
@@ -33,7 +33,7 @@
 			"item": "scguns:gun_barrel"
 		},
 		"gun_grip": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_magazine": {
 			"item": "scguns:gun_barrel"

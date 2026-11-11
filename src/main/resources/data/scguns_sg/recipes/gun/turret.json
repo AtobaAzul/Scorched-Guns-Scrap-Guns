@@ -15,13 +15,13 @@
 			"item": "scguns:gun_grip"
 		},
 		"gun_top_barrel_1": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_top_barrel_2": {
 			"item": "scguns:heavy_gun_barrel"
 		},
 		"gun_internal_2": {
-			"item": "scguns:copper_gun_frame"
+			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_barrel_1": {
 			"item": "scguns:auto_turret"

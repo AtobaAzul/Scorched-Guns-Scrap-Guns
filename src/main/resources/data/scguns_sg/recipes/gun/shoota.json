@@ -15,7 +15,7 @@
 			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_top_barrel_1": {
-			"item": "scguns:copper_gun_frame"
+			"item": "scguns:heavy_gun_parts"
 		},
 		"gun_top_barrel_2": {
 			"tag": "minecraft:wool"
@@ -24,7 +24,7 @@
 			"item": "scguns:rapid_firing_unit"
 		},
 		"gun_internal_2": {
-			"tag": "forge:storage_blocks/copper"
+			"tag": "forge:storage_blocks/anthralite"
 		},
 		"gun_barrel_1": {
 			"item": "scguns:heavy_gun_barrel"

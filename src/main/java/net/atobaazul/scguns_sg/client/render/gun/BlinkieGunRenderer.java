@@ -1,4 +1,4 @@
-package net.atobaazul.scguns_sg.client.render;
+package net.atobaazul.scguns_sg.client.render.gun;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

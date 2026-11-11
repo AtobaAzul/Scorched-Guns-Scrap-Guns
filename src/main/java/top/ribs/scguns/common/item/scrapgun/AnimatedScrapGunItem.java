@@ -1,8 +1,7 @@
 package top.ribs.scguns.common.item.scrapgun;
 
-import net.atobaazul.scguns_sg.ScrapGuns;
-import net.atobaazul.scguns_sg.client.render.BlinkieGunRenderer;
-import net.atobaazul.scguns_sg.client.render.RokkitGunRenderer;
+import net.atobaazul.scguns_sg.client.render.gun.BlinkieGunRenderer;
+import net.atobaazul.scguns_sg.client.render.gun.RokkitGunRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -18,6 +17,7 @@ public class AnimatedScrapGunItem extends AnimatedGunItem {
     private final String gunID;
     private Boolean isVolley;
     private Integer volleyAmount;
+    private float meleeKnockback = 0;
 
     public AnimatedScrapGunItem(Properties properties, String path, SoundEvent reloadSoundMagOut, SoundEvent reloadSoundMagIn, SoundEvent reloadSoundEnd, SoundEvent boltPullSound, SoundEvent boltReleaseSound) {
         super(properties, path, reloadSoundMagOut, reloadSoundMagIn, reloadSoundEnd, boltPullSound, boltReleaseSound);
@@ -73,5 +73,14 @@ public class AnimatedScrapGunItem extends AnimatedGunItem {
                 return this.renderer;
             }
         });
+    }
+
+    public AnimatedScrapGunItem setMeleeKnockback(int value) {
+        this.meleeKnockback = value;
+        return this;
+    }
+
+    public float getMeleeKnockback() {
+        return this.meleeKnockback;
     }
 }
