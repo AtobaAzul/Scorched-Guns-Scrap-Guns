@@ -17,8 +17,8 @@
   "general": {
     "weaponType": "shotgun",
     "fireMode": "scguns:automatic",
-    "gripType": "scguns:two_handed",
-    "baseGripType": "scguns:two_handed",
+    "gripType": "scguns:one_handed",
+    "baseGripType": "scguns:one_handed",
     "rate": 5,
     "meleeDamage": 10,
     "meleeCooldownTicks": 20,

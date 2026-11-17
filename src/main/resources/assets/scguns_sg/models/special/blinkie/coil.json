@@ -1,0 +1,63 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"1": "scguns_sg:item/blinkie"
+	},
+	"elements": [
+		{
+			"name": "coil",
+			"from": [6.95, 6, 3],
+			"to": [9.05, 8.25, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 9]},
+			"faces": {
+				"north": {"uv": [1.5, 5.75, 2, 6.375], "texture": "#1"},
+				"east": {"uv": [2.5, 0, 4.125, 0.625], "texture": "#1"},
+				"south": {"uv": [5.75, 5.25, 6.25, 5.875], "texture": "#1"},
+				"west": {"uv": [2.5, 0.75, 4.125, 1.375], "texture": "#1"},
+				"up": {"uv": [2.75, 5.875, 2.25, 4.25], "texture": "#1"},
+				"down": {"uv": [3.25, 4.25, 2.75, 5.875], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 6.75, -7],
+			"scale": [1.3, 1.3, 1.3]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 6.75, -7],
+			"scale": [1.3, 1.3, 1.3]
+		},
+		"firstperson_righthand": {
+			"translation": [-4.5, 9.5, -1]
+		},
+		"firstperson_lefthand": {
+			"translation": [-4.5, 9.5, -1]
+		},
+		"ground": {
+			"translation": [0, 9.5, -3.75],
+			"scale": [1.3, 1.3, 1.3]
+		},
+		"gui": {
+			"rotation": [74.02, -53.34, 70.48],
+			"translation": [-1, 6.25, 0],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"fixed": {
+			"rotation": [90, 55, -90],
+			"translation": [1.5, 8.5, 0],
+			"scale": [1.5, 1.5, 1.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "coil",
+			"origin": [8, 0, 8],
+			"scope": 0,
+			"color": 5,
+			"children": [0]
+		}
+	]
+}
