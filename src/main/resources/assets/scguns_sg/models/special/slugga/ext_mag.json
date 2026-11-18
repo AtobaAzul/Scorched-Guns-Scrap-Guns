@@ -8,9 +8,9 @@
 	"elements": [
 		{
 			"name": "extended_mag",
-			"from": [6.85, -1.9, 7],
-			"to": [9.15, -1.4, 10.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9]},
+			"from": [6.85, -1.65, 7],
+			"to": [9.15, -1.15, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.25, 9]},
 			"faces": {
 				"north": {"uv": [7.25, 6.75, 7.875, 6.875], "texture": "#2"},
 				"east": {"uv": [7, 4.25, 7.875, 4.375], "texture": "#2"},
@@ -22,9 +22,9 @@
 		},
 		{
 			"name": "extended_mag",
-			"from": [7.1, -1.4, 7.25],
-			"to": [8.9, 3.1, 10.25],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9]},
+			"from": [7.1, -1.15, 7.25],
+			"to": [8.9, 3.35, 10.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.25, 9]},
 			"faces": {
 				"north": {"uv": [1, 2.5, 1.5, 3.625], "texture": "#2"},
 				"east": {"uv": [0, 1.25, 0.75, 2.375], "texture": "#2"},

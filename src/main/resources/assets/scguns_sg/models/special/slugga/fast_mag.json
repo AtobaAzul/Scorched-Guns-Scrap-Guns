@@ -8,9 +8,9 @@
 	"elements": [
 		{
 			"name": "speed_mag",
-			"from": [6.85, 0.1, 7],
-			"to": [9.15, 0.6, 10.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9]},
+			"from": [6.85, 0.35, 7],
+			"to": [9.15, 0.85, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.25, 9]},
 			"faces": {
 				"north": {"uv": [7.25, 6.25, 7.875, 6.375], "texture": "#2"},
 				"east": {"uv": [7, 2.75, 7.875, 2.875], "texture": "#2"},
@@ -22,9 +22,9 @@
 		},
 		{
 			"name": "speed_mag",
-			"from": [8, -0.9, 7],
-			"to": [8, 0.1, 10.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9]},
+			"from": [8, -0.65, 7],
+			"to": [8, 0.35, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.25, 9]},
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0.25], "texture": "#2"},
 				"east": {"uv": [6, 4.25, 6.875, 4.5], "texture": "#2"},
@@ -36,9 +36,9 @@
 		},
 		{
 			"name": "speed_mag",
-			"from": [7.1, 0.6, 7.25],
-			"to": [8.9, 3.1, 10.25],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 9]},
+			"from": [7.1, 0.85, 7.25],
+			"to": [8.9, 3.35, 10.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.25, 9]},
 			"faces": {
 				"north": {"uv": [5.25, 0, 5.75, 0.625], "texture": "#2"},
 				"east": {"uv": [0.5, 3.75, 1.25, 4.375], "texture": "#2"},
