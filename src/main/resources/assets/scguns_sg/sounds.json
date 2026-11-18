@@ -85,7 +85,17 @@
         "volume": 1.25
       }
     ]
+  },
+  "item.rokkit_launcha.fire": {
+    "subtitle": "subtitle.scguns.fire",
+    "sounds": [
+      {
+        "name": "scguns_sg:item/rokkit_launcha/fire1",
+        "volume": 1
+      }
+    ]
   }
+
 
 
 

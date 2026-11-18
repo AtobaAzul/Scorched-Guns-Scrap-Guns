@@ -63,8 +63,8 @@
   },
   "sounds": {
     "cock": "scguns:item.pistol.cock",
-    "enchantedFire": "scguns:item.rocket_rifle.fire_2",
-    "fire": "scguns:item.rocket_rifle.fire_2",
+    "enchantedFire": "scguns_sg:item.rokkit_launcha.fire",
+    "fire": "scguns_sg:item.rokkit_launcha.fire",
     "reload": "scguns:item.gauss.reload"
   }
 }
