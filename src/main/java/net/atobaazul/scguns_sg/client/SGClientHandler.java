@@ -33,7 +33,7 @@ public class SGClientHandler {
         ModelOverrides.register(ModItems.SHOOTA.get(), new ShootaModel());
         ModelOverrides.register(ModItems.SLUGGA.get(), new SluggaModel());
         ModelOverrides.register(ModItems.STONKA.get(), new StonkaModel());
-        //ModelOverrides.register(ModItems.TAKAH.get(), new TakahModel());
+        ModelOverrides.register(ModItems.TAKAH.get(), new TakahModel());
         ModelOverrides.register(ModItems.TURRET.get(), new TurretModel());
     }
 }
