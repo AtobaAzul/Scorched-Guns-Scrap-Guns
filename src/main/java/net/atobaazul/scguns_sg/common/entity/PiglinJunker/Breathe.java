@@ -24,7 +24,7 @@ public class Breathe extends Behavior<Mob> {
     public Breathe(int cooldownDuration) {
         super(ImmutableMap.of(
                 MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT
-        ), 70);
+        ), 35);
         this.cooldownDuration = cooldownDuration;
     }
 
@@ -68,7 +68,7 @@ public class Breathe extends Behavior<Mob> {
             owner.setYHeadRot(yaw);
             Vec3 lookAngle = owner.getLookAngle();
             Vec3 eyePosition = owner.getEyePosition();
-            this.range+=0.2285714286;
+            this.range+=0.4571428572;
             double coneAngle = Math.toRadians(20);
             double step = 0.5;
             for (double distance = 0; distance <= range; distance += step) {

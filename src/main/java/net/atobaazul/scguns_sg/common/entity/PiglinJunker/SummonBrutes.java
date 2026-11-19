@@ -45,6 +45,7 @@ public class SummonBrutes extends Behavior<Mob>{
                 MobSpawnType.EVENT, null, null
             );
             brute.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ModItems.ANTHRALITE_RESPIRATOR.get()));
+            brute.setTarget(mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get());
         }
     }
 }
