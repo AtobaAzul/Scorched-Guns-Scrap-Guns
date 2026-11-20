@@ -22,8 +22,8 @@ public class ModItems {
     //gun example
 
     // !!! IMPORTANT !!! FOR CUSTOM GUN ITEM CLASSES, THEY NEED TO BE UNDER THE top.ribs.common.item.gun PACKAGE. OTHERWISE RELOADS WILL NOT WORK.
-    public static final RegistryObject<AnimatedGunItem> STONKA = REGISTER.register("stonka",
-            () -> new AnimatedGunItem(
+    public static final RegistryObject<AnimatedScrapGunItem> STONKA = REGISTER.register("stonka",
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "stonka", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -34,8 +34,8 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> SLUGGA = REGISTER.register("slugga",
-            () -> new AnimatedGunItem(
+    public static final RegistryObject<AnimatedScrapGunItem> SLUGGA = REGISTER.register("slugga",
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(250).rarity(PIGLISH),
                     "slugga", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -46,8 +46,8 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> SHOOTA= REGISTER.register("shoota",
-            () -> new AnimatedGunItem(
+    public static final RegistryObject<AnimatedScrapGunItem> SHOOTA= REGISTER.register("shoota",
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "shoota", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -58,7 +58,7 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> BLINKIE= REGISTER.register("blinkie", () -> new AnimatedScrapGunItem(
+    public static final RegistryObject<AnimatedScrapGunItem> BLINKIE= REGISTER.register("blinkie", () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(150).rarity(PIGLISH),
                     "blinkie", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -69,7 +69,7 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> DAKKA= REGISTER.register("dakka",
+    public static final RegistryObject<AnimatedScrapGunItem> DAKKA= REGISTER.register("dakka",
             () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "dakka", // Model path
@@ -84,7 +84,7 @@ public class ModItems {
     );
 
     public static final RegistryObject<AnimatedGunItem> TAKAH= REGISTER.register("takah",
-            () -> new AnimatedGunItem(
+            () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(250).rarity(PIGLISH),
                     "takah", // Model path
                     ModSounds.MAG_OUT.get(),        // Reload sound mag out
@@ -95,7 +95,7 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> DRUMMA= REGISTER.register("drumma",
+    public static final RegistryObject<AnimatedScrapGunItem> DRUMMA= REGISTER.register("drumma",
             () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(200).rarity(PIGLISH),
                     "drumma", // Model path
@@ -109,7 +109,7 @@ public class ModItems {
             )
     );
 
-    public static final RegistryObject<AnimatedGunItem> TURRET = REGISTER.register("turret",
+    public static final RegistryObject<AnimatedScrapGunItem> TURRET = REGISTER.register("turret",
             () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "turret", // Model path
@@ -122,7 +122,7 @@ public class ModItems {
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
             ).setMeleeKnockback(1)
     );
-    public static final RegistryObject<AnimatedGunItem> PUNCHA = REGISTER.register("puncha",
+    public static final RegistryObject<AnimatedScrapGunItem> PUNCHA = REGISTER.register("puncha",
             () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(300).rarity(PIGLISH),
                     "puncha", // Model path
@@ -135,7 +135,7 @@ public class ModItems {
                     ModSounds.COPPER_GUN_JAM.get()    // Ejector sound release
             ).setMeleeKnockback(3)
     );
-    public static final RegistryObject<AnimatedGunItem> ROKKIT_LAUNCHA = REGISTER.register("rokkit_launcha",
+    public static final RegistryObject<AnimatedScrapGunItem> ROKKIT_LAUNCHA = REGISTER.register("rokkit_launcha",
             () -> new AnimatedScrapGunItem(
                     new Item.Properties().stacksTo(1).durability(150).rarity(PIGLISH),
                     "rokkit_launcha", // Model path

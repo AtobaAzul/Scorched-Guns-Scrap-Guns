@@ -18,7 +18,7 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> DAKKA_FIRE = register("item.dakka.fire");
     public static final RegistryObject<SoundEvent> TAKAH_FIRE = register("item.takah.fire");
 
-
+    public static final RegistryObject<SoundEvent> ROKKIT_LAUNCHA_FIRE = register("item.rokkit_launcha.fire");
 
     private static RegistryObject<SoundEvent> register(String key) {
         return REGISTER.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, key)));
