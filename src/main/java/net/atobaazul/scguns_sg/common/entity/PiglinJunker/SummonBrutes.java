@@ -3,6 +3,7 @@ package net.atobaazul.scguns_sg.common.entity.PiglinJunker;
 import com.google.common.collect.ImmutableMap;
 
 import net.atobaazul.scguns_sg.common.entity.ai.ModBrainMemories;
+import net.atobaazul.scguns_sg.common.entity.goal.MoveToRaidTargetGoal;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -46,6 +47,7 @@ public class SummonBrutes extends Behavior<Mob>{
             );
             brute.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ModItems.ANTHRALITE_RESPIRATOR.get()));
             brute.setTarget(mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get());
+            brute.goalSelector.addGoal(0, new MoveToRaidTargetGoal(brute, mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get()));
         }
     }
 }
