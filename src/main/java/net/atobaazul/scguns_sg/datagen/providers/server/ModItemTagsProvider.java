@@ -15,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 import static net.atobaazul.scguns_sg.ScrapGuns.MOD_ID;
 import static net.atobaazul.scguns_sg.common.ModTags.SCRAP_GUN_TIER;
 import static net.atobaazul.scguns_sg.registries.ModItems.*;
+import static top.ribs.scguns.init.ModItems.PLASMA_CORE;
 
 
 public class ModItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
@@ -22,6 +23,7 @@ public class ModItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
     private static final TagKey<Item> PISTOL_AMMO = ItemTags.create(new ResourceLocation("scguns", "pistol_ammo"));
     private static final TagKey<Item> RIFLE_AMMO = ItemTags.create(new ResourceLocation("scguns", "rifle_ammo"));
     private static final TagKey<Item> SHOTGUN_AMMO = ItemTags.create(new ResourceLocation("scguns", "shotgun_ammo"));
+    private static final TagKey<Item> ENERGY_AMMO = ItemTags.create(new ResourceLocation("scguns", "energy_ammo"));
     private static final TagKey<Item> AMMO = ItemTags.create(new ResourceLocation("scguns", "ammo"));
     private static final TagKey<Item> EMPTY_CASING = ItemTags.create(new ResourceLocation("scguns", "empty_casing"));
 
@@ -40,6 +42,10 @@ public class ModItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvide
                 .add(TAKAH.get())
                 .add(ROKKIT_LAUNCHA.get())
                 .add(TURRET.get());
+
+        tag(AMMO).add(PLASMA_CORE.get());
+
+        tag(ENERGY_AMMO).add(PLASMA_CORE.get());
 
         /*tag(ModTags.Items.ONE_HANDED_CARBINE)
                 .add(REHEARSE.get());
