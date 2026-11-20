@@ -55,7 +55,7 @@
   },
   "reloads": {
     "emptyMagTimer": 10,
-    "maxAmmo": 40,
+    "maxAmmo": 20,
     "reloadItem": "scguns:shatter_round",
     "reloadTimer": 60,
     "reloadType": "scguns:mag_fed"
