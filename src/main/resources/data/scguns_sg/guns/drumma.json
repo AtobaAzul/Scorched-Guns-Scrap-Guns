@@ -31,7 +31,7 @@
     "criticalChance": 0.01,
     "critDamageMultiplier": 2,
     "advantage": "scguns:heavy",
-    "damage": 12.0,
+    "damage": 10.0,
     "damageFalloffStart": 10.0,
     "damageFalloffEnd": 30.0,
     "damageFalloffMinMultiplier": 0.45,
@@ -53,7 +53,7 @@
     "criticalChance": 0.01,
     "critDamageMultiplier": 2,
     "advantage": "scguns:none",
-    "damage": 9.0,
+    "damage": 7.0,
     "damageFalloffStart": 12.0,
     "damageFalloffEnd": 20.0,
     "damageFalloffMinMultiplier": 0.45,
@@ -69,7 +69,7 @@
   },
   "reloads": {
     "emptyMagTimer": 10,
-    "maxAmmo": 20,
+    "maxAmmo": 12,
     "reloadItem": "scguns:compact_copper_round",
     "reloadTimer": 40,
     "reloadType": "scguns:mag_fed"
