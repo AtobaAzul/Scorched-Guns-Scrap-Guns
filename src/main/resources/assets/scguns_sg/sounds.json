@@ -91,20 +91,8 @@
     "sounds": [
       {
         "name": "scguns_sg:item/rokkit_launcha/fire1",
-        "volume": 1
+        "volume": 1.25
       }
     ]
   }
-
-
-
-
-
-
-
-
-
-
-
-
 }
