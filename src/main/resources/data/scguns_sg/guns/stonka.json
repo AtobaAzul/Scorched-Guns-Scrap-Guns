@@ -47,6 +47,7 @@
     "criticalChance": 0.1,
     "critDamageMultiplier": 2,
     "knockbackStrength": 0.6,
+    "armorPen": 3.0,
     "damageFalloffStart": 15.0,
     "damageFalloffEnd": 25.0,
     "damageFalloffMinMultiplier": 0.6,

@@ -68,7 +68,6 @@
     "alwaysSpread": true,
     "recoilAngle": 3.75,
     "recoilKick": 3.5,
-    "armorPen": 3.0,
     "spread": 5.0,
     "criticalChance": 0.1,
     "critDamageMultiplier": 2,
