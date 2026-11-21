@@ -10,14 +10,15 @@
   "general": {
     "weaponType": "sniper",
     "fireMode": "scguns:burst",
-    "burstAmount": 3,
-    "burstCooldown": 20,
+    "burstAmount": 2,
+    "burstCooldown": 15,
     "gripType": "scguns:two_handed",
     "baseGripType": "scguns:two_handed",
-    "rate": 2,
+    "rate": 1,
     "meleeDamage": 5,
     "meleeCooldownTicks": 20,
-    "hotBarrelRate": 4
+    "hotBarrelRate": 4,
+    "recoilAdsReduction": 0.5
   },
   "modules": {
     "attachments": {
@@ -43,7 +44,7 @@
     "critDamageMultiplier": 2,
     "advantage": "scguns:heavy",
     "damage": 25.0,
-    "damageFalloffStart": 25.0,
+    "damageFalloffStart": 30.0,
     "damageFalloffEnd": 60.0,
     "damageFalloffMinMultiplier": 0.7,
     "armorPen": 3.0,

@@ -19,7 +19,7 @@
     "fireMode": "scguns:automatic",
     "gripType": "scguns:mini_gun",
     "baseGripType": "scguns:mini_gun",
-    "rate": 3,
+    "rate": 4,
     "meleeDamage": 7,
     "meleeCooldownTicks": 20,
     "meleeReach": 3.5,
@@ -55,7 +55,7 @@
   },
   "reloads": {
     "emptyMagTimer": 10,
-    "maxAmmo": 20,
+    "maxAmmo": 30,
     "reloadItem": "scguns:shatter_round",
     "reloadTimer": 60,
     "reloadType": "scguns:mag_fed"

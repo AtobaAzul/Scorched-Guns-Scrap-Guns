@@ -71,7 +71,7 @@
     "damageFalloffEnd": 20.0,
     "damageFalloffMinMultiplier": 0.4,
     "advantage": "scguns:none",
-    "damage": 16.0,
+    "damage": 18.0,
     "ejectsCasing": true,
     "item": "scguns:bearpack_shell",
     "casingType": "scguns:medium_brass_casing",
